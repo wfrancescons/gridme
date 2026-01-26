@@ -1,4 +1,4 @@
-import type { Component } from "../_components/cards/types.d.ts";
+import type { Component } from "@/_components/cards/types.d.ts";
 
 type LayoutData = Lume.Data & {
   name: string;
@@ -18,7 +18,6 @@ export default function Layout(
   const { Note, Todo, Image, Text, Map } = comp.cards;
 
   // Check for specific card types to conditionally load scripts/styles
-  const hasNoteCard = components.some((item) => "note" in item);
   const hasMapCard = components.some((item) => "map" in item);
 
   // Organize components into blocks (sections and grids)
@@ -52,26 +51,8 @@ export default function Layout(
       <head>
         <title>{`${name} - Gridme`}</title>
         <link rel="stylesheet" href="/style.css" />
-        {hasNoteCard && (
-          <script
-            type="module"
-            src="/scripts/copyNote.js"
-          />
-        )}
+        <script type="module" src="/script.js" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {hasMapCard && (
-          <>
-            <script src="https://unpkg.com/maplibre-gl@^5.16.0/dist/maplibre-gl.js" />
-            <link
-              href="https://unpkg.com/maplibre-gl@^5.16.0/dist/maplibre-gl.css"
-              rel="stylesheet"
-            />
-            <script
-              type="module"
-              src="/scripts/loadMap.js"
-            />
-          </>
-        )}
       </head>
 
       <body>

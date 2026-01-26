@@ -2,8 +2,6 @@ name: Hello, I’m Gridme!
 description: I help you build a clean, customizable, and visually engaging personal hub for all your links, content, and highlights.
 avatar: /img/avatar.jpg # Image must have a 1:1 ratio; remember to update the favicon in _config.ts
 
-layout: layout.tsx
-
 metas:
   # Ensure SITE_URL is defined in the .env file
   title: "$ title"

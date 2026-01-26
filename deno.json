@@ -4,7 +4,6 @@
     "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.1.4/",
     "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.14/jsx-runtime.ts",
     "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@0.14.9/",
-    "maplibre-gl": "npm:maplibre-gl@^5.16.0",
     "@/": "./src/"
   },
   "permissions": {
@@ -28,7 +27,8 @@
         "esm.sh:443",
         "registry.npmjs.org:443",
         "fonts.googleapis.com:443",
-        "fonts.gstatic.com:443"
+        "fonts.gstatic.com:443",
+        "unpkg.com:443"
       ],
       "env": true,
       "run": true,

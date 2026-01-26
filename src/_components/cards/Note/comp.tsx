@@ -24,7 +24,7 @@ export default function Note({ children, size, comp }: NoteProps) {
           <div className="flex flex-row-reverse gap-1 justify-center items-center">
             <button
               type="button"
-              className="peer text-amber-950/60 inline-flex justify-center items-center bg-amber-500/30 hover:bg-amber-500/50 rounded-full p-2 transition-all duration-200 active:scale-85"
+              className="text-amber-950/60 inline-flex justify-center items-center bg-amber-500/30 hover:bg-amber-500/50 rounded-full p-2 transition-all duration-200 active:scale-85"
               data-note-id={id}
             >
               <img
@@ -34,7 +34,7 @@ export default function Note({ children, size, comp }: NoteProps) {
                 inline
               />
             </button>
-            <span className="scale-0 select-none peer-active:scale-100 peer-focus:scale-100 peer-focus-visible:scale-0 origin-right transition-transform duration-150 ease-in-out text-xs text-amber-950/50">
+            <span className="scale-0 select-none origin-right transition-transform duration-150 ease-in-out text-xs text-amber-950/50">
               Copied!
             </span>
           </div>

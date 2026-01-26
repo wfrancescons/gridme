@@ -1,6 +1,6 @@
-const mapCards = document.querySelectorAll("[data-map-id]");
+import maplibregl from "/maplibre-gl.js";
 
-mapCards.forEach((mapEl) => {
+document.querySelectorAll("[data-map-id]").forEach((mapEl) => {
   const mapInfos = JSON.parse(mapEl.getAttribute("data-map-infos"));
 
   const map = new maplibregl.Map({
@@ -14,11 +14,11 @@ mapCards.forEach((mapEl) => {
 
   map.on("load", () => {
     addFakeUserLocation(map, mapInfos.center, {
-      size: 125,
+      size: 150,
       pulseDuration: 1250,
       pulseDelay: 2000,
       innerColor: "rgba(2, 132, 199, 1)",
-      outerColor: "rgba(2, 132, 199, 1)",
+      outerColor: "rgba(56, 189, 248, 1)",
       strokeColor: "#ffffff",
       strokeWidth: 5,
     });
