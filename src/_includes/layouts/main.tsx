@@ -1,22 +1,19 @@
-import type { Component } from "@/_components/cards/types.d.ts";
+import type { Component } from "@/_components/types.d.ts";
 
 type LayoutData = Lume.Data & {
   name: string;
   description: string;
+  lang: string;
   components: Component[];
 };
 
 type Block =
-  | { type: "section"; title: string }
+  | { type: "section"; title: string; subtitle?: string }
   | { type: "grid"; items: Component[] };
 
 export default function Layout(
-  { name, description, avatar, components, comp }: LayoutData,
+  { name, description, avatar, lang, components, comp }: LayoutData,
 ) {
-  // UI components
-  const { Grid, Profile, Section, Footer } = comp;
-  const { Note, Todo, Image, Text, Map } = comp.cards;
-
   // Check for specific card types to conditionally load scripts/styles
   const hasMapCard = components.some((item) => "map" in item);
 
@@ -34,6 +31,7 @@ export default function Layout(
       blocks.push({
         type: "section",
         title: item.section,
+        subtitle: item.subtitle,
       });
 
       continue;
@@ -47,37 +45,47 @@ export default function Layout(
   }
 
   return (
-    <html>
+    <html lang={lang}>
       <head>
         <title>{`${name} - Gridme`}</title>
         <link rel="stylesheet" href="/style.css" />
-        <script type="module" src="/script.js" />
+        {hasMapCard && (
+          <script
+            src="https://unpkg.com/maplibre-gl@^5.16.0/dist/maplibre-gl.js"
+            defer
+          />
+        )}
+        <script type="module" src="/script.js" inline />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
 
       <body>
         <div className="min-h-screen flex justify-center p-6 bg-neutral-50">
           <div className="w-full max-w-5xl flex flex-col">
-            <Profile img={avatar} name={name} description={description} />
+            <comp.Profile img={avatar} name={name} description={description} />
 
             <main className="w-full flex flex-col items-center justify-center">
               {blocks.map((block) => {
                 switch (block.type) {
                   case "section":
                     return (
-                      <Section
+                      <comp.Section
                         title={block.title}
+                        subtitle={block.subtitle}
                       />
                     );
 
                   case "grid":
                     return (
-                      <Grid>
+                      <comp.Grid>
+                        <comp.cards.Folder size="large">
+                          Folder Teste
+                        </comp.cards.Folder>
                         {block.items.map((item) => {
                           switch (true) {
                             case "image" in item:
                               return (
-                                <Image
+                                <comp.cards.Image
                                   size={item.size}
                                   src={item.src}
                                   alt={item.alt}
@@ -88,7 +96,7 @@ export default function Layout(
 
                             case "map" in item:
                               return (
-                                <Map
+                                <comp.cards.Map
                                   size={item.size}
                                   center={item.center}
                                   zoom={item.zoom}
@@ -98,25 +106,25 @@ export default function Layout(
 
                             case "note" in item:
                               return (
-                                <Note size={item.size}>
+                                <comp.cards.Note size={item.size}>
                                   {item.content}
-                                </Note>
+                                </comp.cards.Note>
                               );
 
                             case "text" in item:
                               return (
-                                <Text
+                                <comp.cards.Text
                                   size={item.size}
                                   color={item.color}
                                   textSize={item.textSize}
                                 >
                                   {item.content}
-                                </Text>
+                                </comp.cards.Text>
                               );
 
                             case "todo" in item:
                               return (
-                                <Todo
+                                <comp.cards.Todo
                                   size={item.size}
                                   items={item.items}
                                 />
@@ -126,13 +134,13 @@ export default function Layout(
                               return null;
                           }
                         })}
-                      </Grid>
+                      </comp.Grid>
                     );
                 }
               })}
             </main>
 
-            <Footer hasMapCard={hasMapCard} />
+            <comp.Footer hasMapCard={hasMapCard} />
           </div>
         </div>
       </body>
