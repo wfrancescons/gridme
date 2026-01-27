@@ -15,7 +15,9 @@ export default function Note({ children, size, comp }: NoteProps) {
   const id = generateNoteId();
 
   return (
-    <comp.Card size={size}>
+    <div
+      className={`card card-${size} shadow-xl/5 hover:shadow-xl/10 duration-300 transition-all active:scale-95 hover:col-span-full hover:row-span-3`}
+    >
       <div className="w-full h-full flex flex-col overflow-hidden">
         <div className="flex flex-row justify-between bg-amber-200 p-4 items-center">
           <h3 className="font-semibold leading-tight text-amber-950">Note</h3>
@@ -46,6 +48,6 @@ export default function Note({ children, size, comp }: NoteProps) {
           <p>{children}</p>
         </div>
       </div>
-    </comp.Card>
+    </div>
   );
 }

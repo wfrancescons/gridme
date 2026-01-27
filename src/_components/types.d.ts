@@ -2,6 +2,7 @@ type CardSize = "large" | "wide" | "square";
 
 type SectionComponent = {
   section: string;
+  subtitle?: string;
 };
 
 type ImageComponent = {

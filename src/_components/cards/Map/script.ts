@@ -1,7 +1,8 @@
-import maplibregl from "/maplibre-gl.js";
-
-document.querySelectorAll("[data-map-id]").forEach((mapEl) => {
-  const mapInfos = JSON.parse(mapEl.getAttribute("data-map-infos"));
+document.querySelectorAll("[data-map-infos]").forEach((mapEl) => {
+  const mapInfos = JSON.parse(mapEl.getAttribute("data-map-infos")!);
+  const mapPlaceholder = mapEl.parentElement?.querySelector<HTMLElement>(
+    `[data-map-placeholder]`,
+  );
 
   const map = new maplibregl.Map({
     container: mapEl,
@@ -14,14 +15,17 @@ document.querySelectorAll("[data-map-id]").forEach((mapEl) => {
 
   map.on("load", () => {
     addFakeUserLocation(map, mapInfos.center, {
-      size: 150,
+      size: 175,
       pulseDuration: 1250,
       pulseDelay: 2000,
-      innerColor: "rgba(2, 132, 199, 1)",
-      outerColor: "rgba(56, 189, 248, 1)",
+      innerColor: "rgba(96, 165, 250, 1)",
+      outerColor: "rgba(96, 165, 250, 1)",
       strokeColor: "#ffffff",
       strokeWidth: 5,
     });
+    if (mapPlaceholder) {
+      mapPlaceholder.style.opacity = "0";
+    }
   });
 });
 
