@@ -30,6 +30,18 @@
 }
 
 @layer components {
+  .card-grid {
+    @apply grid gap-6 justify-center;
+
+    grid-template-columns: repeat(2, clamp(8rem, 45vw, 10rem));
+    grid-auto-rows: clamp(8rem, 45vw, 10rem);
+  }
+
+  @media (min-width: 48rem) {
+    .card-grid {
+      grid-template-columns: repeat(4, clamp(8rem, 45vw, 10rem));
+    }
+  }
   .card {
     @apply bg-neutral-100 border border-neutral-200 rounded-3xl overflow-hidden;
   }
