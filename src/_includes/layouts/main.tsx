@@ -51,7 +51,8 @@ export default function Layout(
         <link rel="stylesheet" href="/style.css" />
         {hasMapCard && (
           <script
-            src="https://unpkg.com/maplibre-gl@^5.16.0/dist/maplibre-gl.js"
+            src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.17.0/dist/maplibre-gl.min.js"
+            crossorigin="anonymous"
             defer
           />
         )}
@@ -78,9 +79,6 @@ export default function Layout(
                   case "grid":
                     return (
                       <comp.Grid>
-                        <comp.cards.Folder size="large">
-                          Folder Teste
-                        </comp.cards.Folder>
                         {block.items.map((item) => {
                           switch (true) {
                             case "image" in item:
