@@ -39,7 +39,8 @@
 
   @media (min-width: 48rem) {
     .card-grid {
-      grid-template-columns: repeat(4, clamp(8rem, 45vw, 10rem));
+      grid-template-columns: repeat(4, 10rem);
+      grid-auto-rows: 10rem;
     }
   }
   .card {
