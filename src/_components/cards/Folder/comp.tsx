@@ -119,7 +119,7 @@ export default function Folder({ name, children, size, comp }: FolderProps) {
           </div>
 
           {/* Modal Body */}
-          <div className="flex-1 overflow-y-auto p-2 overscroll-contain">
+          <div className="flex-1 flex flex-col gap-10 overflow-y-auto p-2 overscroll-contain">
             {children}
           </div>
         </div>
