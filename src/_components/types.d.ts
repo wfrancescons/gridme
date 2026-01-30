@@ -1,4 +1,4 @@
-type CardSize = "large" | "wide" | "square";
+import type { CardSize } from "./Card.tsx";
 
 type SectionComponent = {
   section: string;
@@ -42,7 +42,15 @@ type TodoComponent = {
   items: { text: string; completed?: boolean }[];
 };
 
+type FolderComponent = {
+  folder: null;
+  size: CardSize;
+  name: string;
+  components: Component[];
+};
+
 export type Component =
+  | FolderComponent
   | SectionComponent
   | ImageComponent
   | MapComponent

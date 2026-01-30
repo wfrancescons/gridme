@@ -7,55 +7,161 @@ type LayoutData = Lume.Data & {
   components: Component[];
 };
 
-type Block =
-  | { type: "section"; title: string; subtitle?: string }
-  | { type: "grid"; items: Component[] };
+type Block = {
+  title?: string;
+  subtitle?: string;
+  items: Component[];
+};
 
 export default function Layout(
   { name, description, avatar, lang, components, comp }: LayoutData,
 ) {
   // Check for specific card types to conditionally load scripts/styles
-  const hasMapCard = components.some((item) => "map" in item);
+  let hasMapCard = false;
 
-  // Organize components into blocks (sections and grids)
-  const blocks: Block[] = [];
-  let currentGrid: Component[] = [];
+  const blocks = buildBlocks(components);
 
-  for (const item of components) {
-    if ("section" in item) {
-      if (currentGrid.length > 0) {
-        blocks.push({ type: "grid", items: currentGrid });
-        currentGrid = [];
+  function buildBlocks(components: Component[]): Block[] {
+    const blocks: Block[] = [];
+    let currentBlock: Block = { items: [] };
+
+    for (const item of components) {
+      if ("section" in item) {
+        if (currentBlock.items.length > 0) {
+          blocks.push(currentBlock);
+        }
+
+        currentBlock = {
+          title: item.section,
+          subtitle: item.subtitle,
+          items: [],
+        };
+
+        continue;
       }
 
-      blocks.push({
-        type: "section",
-        title: item.section,
-        subtitle: item.subtitle,
-      });
-
-      continue;
+      currentBlock.items.push(item);
     }
 
-    currentGrid.push(item);
+    if (currentBlock.items.length > 0) {
+      blocks.push(currentBlock);
+    }
+
+    return blocks;
   }
 
-  if (currentGrid.length > 0) {
-    blocks.push({ type: "grid", items: currentGrid });
+  function renderBlocks(blocks: Block[]) {
+    return blocks.map((block) => (
+      <section className="flex flex-col gap-5 p-2">
+        {(block.title || block.subtitle) && (
+          <comp.Section
+            title={block.title}
+            subtitle={block.subtitle}
+          />
+        )}
+
+        <comp.Grid>
+          {renderGridItems(block.items)}
+        </comp.Grid>
+      </section>
+    ));
   }
+
+  function renderGridItems(items: Component[]) {
+    return items.map((item) => {
+      if ("folder" in item) {
+        const folder = item;
+        const blocks = buildBlocks(folder.components);
+
+        return (
+          <comp.cards.Folder
+            size={folder.size}
+            name={folder.name}
+          >
+            {renderBlocks(blocks)}
+          </comp.cards.Folder>
+        );
+      }
+
+      if ("image" in item) {
+        return (
+          <comp.cards.Image
+            size={item.size}
+            src={item.src}
+            alt={item.alt}
+            caption={item.caption}
+            url={item.url}
+          />
+        );
+      }
+
+      if ("map" in item) {
+        hasMapCard = true;
+        return (
+          <comp.cards.Map
+            size={item.size}
+            center={item.center}
+            zoom={item.zoom}
+            caption={item.caption}
+          />
+        );
+      }
+
+      if ("note" in item) {
+        return (
+          <comp.cards.Note size={item.size}>
+            {item.content}
+          </comp.cards.Note>
+        );
+      }
+
+      if ("text" in item) {
+        return (
+          <comp.cards.Text
+            size={item.size}
+            color={item.color}
+            textSize={item.textSize}
+          >
+            {item.content}
+          </comp.cards.Text>
+        );
+      }
+
+      if ("todo" in item) {
+        return (
+          <comp.cards.Todo
+            size={item.size}
+            items={item.items}
+          />
+        );
+      }
+
+      return null;
+    });
+  }
+
+  const renderedBlocks = renderBlocks(blocks);
 
   return (
     <html lang={lang}>
       <head>
         <title>{`${name} - Gridme`}</title>
         <link rel="stylesheet" href="/style.css" />
+
         {hasMapCard && (
-          <script
-            src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.17.0/dist/maplibre-gl.min.js"
-            crossorigin="anonymous"
-            defer
-          />
+          <>
+            <script
+              src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.17.0/dist/maplibre-gl.min.js"
+              crossorigin="anonymous"
+              defer
+            />
+            <link
+              href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.17.0/dist/maplibre-gl.min.css"
+              rel="stylesheet"
+            />
+          </>
         )}
+
         <script type="module" src="/script.js" inline />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
@@ -63,79 +169,14 @@ export default function Layout(
       <body>
         <div className="min-h-screen flex justify-center p-6 bg-neutral-50">
           <div className="w-full max-w-5xl flex flex-col">
-            <comp.Profile img={avatar} name={name} description={description} />
+            <comp.Profile
+              img={avatar}
+              name={name}
+              description={description}
+            />
 
-            <main className="w-full flex flex-col items-center justify-center">
-              {blocks.map((block) => {
-                switch (block.type) {
-                  case "section":
-                    return (
-                      <comp.Section
-                        title={block.title}
-                        subtitle={block.subtitle}
-                      />
-                    );
-
-                  case "grid":
-                    return (
-                      <comp.Grid>
-                        {block.items.map((item) => {
-                          switch (true) {
-                            case "image" in item:
-                              return (
-                                <comp.cards.Image
-                                  size={item.size}
-                                  src={item.src}
-                                  alt={item.alt}
-                                  caption={item.caption}
-                                  url={item.url}
-                                />
-                              );
-
-                            case "map" in item:
-                              return (
-                                <comp.cards.Map
-                                  size={item.size}
-                                  center={item.center}
-                                  zoom={item.zoom}
-                                  caption={item.caption}
-                                />
-                              );
-
-                            case "note" in item:
-                              return (
-                                <comp.cards.Note size={item.size}>
-                                  {item.content}
-                                </comp.cards.Note>
-                              );
-
-                            case "text" in item:
-                              return (
-                                <comp.cards.Text
-                                  size={item.size}
-                                  color={item.color}
-                                  textSize={item.textSize}
-                                >
-                                  {item.content}
-                                </comp.cards.Text>
-                              );
-
-                            case "todo" in item:
-                              return (
-                                <comp.cards.Todo
-                                  size={item.size}
-                                  items={item.items}
-                                />
-                              );
-
-                            default:
-                              return null;
-                          }
-                        })}
-                      </comp.Grid>
-                    );
-                }
-              })}
+            <main className="w-full flex flex-col gap-10 p-4 items-center justify-center">
+              {renderedBlocks}
             </main>
 
             <comp.Footer hasMapCard={hasMapCard} />

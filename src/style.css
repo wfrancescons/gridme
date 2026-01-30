@@ -27,6 +27,15 @@
   .card a:focus-visible {
     @apply ring-0 ring-offset-0;
   }
+
+  .card:has([data-folder-id]:focus-visible) {
+    @apply ring-2 ring-neutral-600 ring-offset-2 transition-shadow duration-150
+      ease-out;
+  }
+
+  .card [data-folder-id]:focus-visible {
+    @apply ring-0 ring-offset-0;
+  }
 }
 
 @layer components {
