@@ -47,7 +47,7 @@ export default function Map(
           {caption && (
             <div className="pointer-events-none absolute z-20 bottom-0 left-0 p-2">
               <div className="inline-block max-w-full rounded-xl bg-white/45 backdrop-blur-sm px-3 py-2 shadow-md/10">
-                <span className="block text-zinc-700 text-sm/4 font-medium truncate">
+                <span className="block text-zinc-700 text-sm/4 font-semibold truncate">
                   {caption}
                 </span>
               </div>

@@ -37,7 +37,7 @@ export default function Image(
 
           {/* Caption + Link Indicator */}
           <div className="absolute bottom-0 left-0 w-full p-3 flex justify-between items-end">
-            <figcaption className="text-white text-sm/4 text-shadow-md/30 font-medium line-clamp-3">
+            <figcaption className="text-white text-sm/4 text-shadow-md/30 font-semibold line-clamp-3">
               {caption}
             </figcaption>
 

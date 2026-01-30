@@ -33,14 +33,14 @@ export default function Note({ children, size, comp }: NoteProps) {
                 inline
               />
             </button>
-            <span className="scale-0 select-none origin-right transition-transform duration-150 ease-in-out text-xs text-amber-950/50">
+            <span className="scale-0 select-none origin-right transition-transform duration-300 ease-in-out text-xs text-amber-950/50">
               Copied!
             </span>
           </div>
         </div>
 
         <div
-          className="flex-1 px-4 py-3 bg-amber-100 text-zinc-600"
+          className="flex-1 px-4 py-3 bg-amber-100 text-zinc-600 overflow-y-auto"
           data-note-content={id}
         >
           <p>{children}</p>
