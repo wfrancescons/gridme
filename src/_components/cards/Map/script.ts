@@ -1,7 +1,53 @@
+function createElement(tag: string, className: string) {
+  const e = document.createElement(tag);
+  e.className = className;
+  return e;
+}
+
+function addFakeUserLocationHTML(map, lngLat) {
+  const container = createElement(
+    "div",
+    "relative w-14 h-14 pointer-events-none",
+  );
+
+  const pulse = createElement(
+    "div",
+    `
+    absolute inset-0
+    rounded-full
+    bg-blue-400/40
+    animate-[ping_4s_cubic-bezier(0,0,0.2,1)_infinite]
+  `,
+  );
+
+  const dot = createElement(
+    "div",
+    `
+    absolute left-1/2 top-1/2
+    -translate-x-1/2 -translate-y-1/2
+    w-6 h-6
+    rounded-full
+    bg-blue-400
+    ring-4 ring-white
+    shadow-[0_6px_14px_rgba(0,0,0,0.50)]
+    z-10
+  `,
+  );
+
+  container.append(pulse, dot);
+
+  new maplibregl.Marker({
+    element: container,
+    anchor: "center",
+  })
+    .setLngLat(lngLat)
+    .addTo(map);
+}
+
 document.querySelectorAll("[data-map-infos]").forEach((mapEl) => {
   const mapInfos = JSON.parse(mapEl.getAttribute("data-map-infos")!);
   const mapPlaceholder = mapEl.parentElement?.querySelector<HTMLElement>(
-    `[data-map-placeholder]`,
+    "[data-map-placeholder]",
   );
 
   const map = new maplibregl.Map({
@@ -14,119 +60,10 @@ document.querySelectorAll("[data-map-infos]").forEach((mapEl) => {
   });
 
   map.on("load", () => {
-    addFakeUserLocation(map, mapInfos.center, {
-      size: 175,
-      pulseDuration: 1250,
-      pulseDelay: 2000,
-      innerColor: "rgba(96, 165, 250, 1)",
-      outerColor: "rgba(96, 165, 250, 1)",
-      strokeColor: "#ffffff",
-      strokeWidth: 5,
-    });
+    addFakeUserLocationHTML(map, mapInfos.center);
+
     if (mapPlaceholder) {
       mapPlaceholder.style.opacity = "0";
     }
   });
 });
-
-function createPulsingDot(map, options) {
-  const {
-    size,
-    pulseDuration,
-    pulseDelay,
-    innerColor,
-    outerColor,
-    strokeColor,
-    strokeWidth,
-  } = options;
-
-  const cycleDuration = pulseDuration + pulseDelay;
-
-  return {
-    width: size,
-    height: size,
-    data: new Uint8Array(size * size * 4),
-
-    onAdd() {
-      const canvas = document.createElement("canvas");
-      canvas.width = this.width;
-      canvas.height = this.height;
-
-      this.context = canvas.getContext("2d", {
-        willReadFrequently: true,
-      });
-    },
-
-    render() {
-      const now = performance.now();
-      const cycleTime = now % cycleDuration;
-
-      const ctx = this.context;
-      ctx.clearRect(0, 0, this.width, this.height);
-
-      const center = this.width / 2;
-      const baseRadius = center * 0.3;
-
-      if (cycleTime < pulseDuration) {
-        const maxAlpha = 0.5;
-        const t = cycleTime / pulseDuration;
-        const outerRadius = baseRadius + center * 0.7 * t;
-
-        ctx.beginPath();
-        ctx.arc(center, center, outerRadius, 0, Math.PI * 2);
-        ctx.fillStyle = outerColor.replace("1)", `${(1 - t) * maxAlpha})`);
-        ctx.fill();
-      }
-
-      // Pin shadow
-      ctx.save();
-      ctx.shadowColor = "rgba(0, 0, 0, 0.35)";
-      ctx.shadowBlur = 12;
-      ctx.shadowOffsetX = 0;
-      ctx.shadowOffsetY = 2;
-
-      ctx.beginPath();
-      ctx.arc(center, center, baseRadius, 0, Math.PI * 2);
-      ctx.fillStyle = innerColor;
-      ctx.strokeStyle = strokeColor;
-      ctx.lineWidth = strokeWidth + 0.5;
-      ctx.lineJoin = "round";
-      ctx.fill();
-      ctx.stroke();
-
-      this.data = ctx.getImageData(0, 0, this.width, this.height).data;
-      map.triggerRepaint();
-      return true;
-    },
-  };
-}
-
-function addFakeUserLocation(map, lngLat, options) {
-  const imageId = `pulsing-dot-${Math.random().toString(36).slice(2)}`;
-  const sourceId = `fake-user-location-${imageId}`;
-
-  const pulsingDot = createPulsingDot(map, options);
-
-  map.addImage(imageId, pulsingDot, { pixelRatio: 2 });
-
-  map.addSource(sourceId, {
-    type: "geojson",
-    data: {
-      type: "Feature",
-      geometry: {
-        type: "Point",
-        coordinates: lngLat,
-      },
-    },
-  });
-
-  map.addLayer({
-    id: sourceId,
-    type: "symbol",
-    source: sourceId,
-    layout: {
-      "icon-image": imageId,
-      "icon-allow-overlap": true,
-    },
-  }, "label_city");
-}
