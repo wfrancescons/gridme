@@ -20,12 +20,12 @@ export default function Folder(
   const id = generateFolderId();
 
   const colorsMap = {
-    amber: ["bg-amber-200", "fill-amber-300"],
-    blue: ["bg-blue-200", "fill-blue-300"],
-    green: ["bg-lime-200", "fill-lime-300"],
-    neutral: ["bg-stone-200", "fill-stone-300"],
-    red: ["bg-red-200", "fill-red-300"],
-    purple: ["bg-purple-200", "fill-purple-300"],
+    amber: ["bg-amber-200", "fill-amber-300", "text-amber-950"],
+    blue: ["bg-blue-200", "fill-blue-300", "text-blue-950"],
+    green: ["bg-lime-200", "fill-lime-300", "text-lime-950"],
+    neutral: ["bg-stone-200", "fill-stone-300", "text-stone-950"],
+    red: ["bg-red-200", "fill-red-300", "text-red-950"],
+    purple: ["bg-purple-200", "fill-purple-300", "text-purple-950"],
   };
 
   return (
@@ -79,10 +79,14 @@ export default function Folder(
               </svg>
 
               <div class="absolute bottom-0 left-0 flex flex-col gap-1 h-full w-full justify-end items-start p-4">
-                <span class="text-base truncate leading-none font-semibold text-black/80">
+                <span
+                  class={`text-base truncate leading-none font-semibold ${
+                    colorsMap[color][2]
+                  }/80`}
+                >
                   {name}
                 </span>
-                <span class="text-sm font-semibold text-black/50">
+                <span class={`text-sm font-semibold ${colorsMap[color][2]}/60`}>
                   {itemCount}
                 </span>
               </div>
@@ -95,9 +99,11 @@ export default function Folder(
       <dialog
         id={id}
         closedby="any"
-        className="fixed inset-0 m-0 p-0 bg-white/20 h-dvh w-screen max-h-none max-w-none grid items-end justify-center md:items-center
+        className={`fixed inset-0 m-0 p-0 backdrop:bg-transparent ${
+          colorsMap[color][0]
+        }/30 h-dvh w-screen max-h-none max-w-none grid items-end justify-center md:items-center
         overflow-clip pointer-events-none transition-discrete invisible opacity-0 backdrop-blur-none open:visible open:opacity-100 open:pointer-events-auto
-        open:backdrop-blur-sm starting:open:opacity-0 group transition-all duration-300 ease-in-out"
+        open:backdrop-blur-sm starting:open:opacity-0 group transition-all duration-300 ease-in-out`}
       >
         {/* Backdrop to close modal on outside click */}
         <form
