@@ -46,6 +46,7 @@ type FolderComponent = {
   folder: null;
   size: CardSize;
   name: string;
+  length: number;
   components: Component[];
 };
 

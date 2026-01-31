@@ -2,7 +2,8 @@ import type { CardProps } from "@/_components/Card.tsx";
 
 type FolderProps = CardProps & {
   name: string;
-  children?: JSX.Children;
+  itemCount: number;
+  children: JSX.Children;
 };
 
 let folderId = 0;
@@ -12,7 +13,9 @@ function generateFolderId() {
   return `folder-${folderId}`;
 }
 
-export default function Folder({ name, children, size, comp }: FolderProps) {
+export default function Folder(
+  { name, itemCount, children, size, comp }: FolderProps,
+) {
   const id = generateFolderId();
 
   return (
@@ -29,9 +32,9 @@ export default function Folder({ name, children, size, comp }: FolderProps) {
 
             <div class="absolute inset-0 z-10 flex items-end justify-center pb-2">
               <div class="relative h-full w-full [&>div]:absolute [&>div]:bottom-1 [&>div]:left-1/2 [&>div]:size-[85%] [&>div]:-translate-x-1/2 [&>div]:rounded-2xl [&>div]:outline-5 [&>div]:outline-white [&>div]:transition-all [&>div]:duration-500 group-hover/folder:[&>div]:bottom-3">
-                <div class="z-10 translate-y-2 -rotate-2 bg-gray-300"></div>
+                <div class="z-10 translate-y-2 -rotate-2 bg-stone-300"></div>
 
-                <div class="z-20 flex translate-y-6 rotate-1 flex-col gap-2 bg-gray-200 p-4">
+                <div class="z-20 flex translate-y-6 rotate-1 flex-col gap-2 bg-stone-200 p-4">
                   <div class="h-3 w-3/4 rounded-full bg-white/70"></div>
                   <div class="h-3 w-full rounded-full bg-white/50"></div>
                   <div class="h-3 w-5/6 rounded-full bg-white/50"></div>
@@ -65,9 +68,12 @@ export default function Folder({ name, children, size, comp }: FolderProps) {
                 />
               </svg>
 
-              <div class="absolute bottom-4 left-1/2 flex h-8 w-full -translate-x-1/2 items-center justify-center px-2 text-center">
-                <span class="text-md truncate leading-none font-semibold text-stone-700">
+              <div class="absolute bottom-0 left-0 flex flex-col gap-1 h-full w-full justify-end items-start p-4">
+                <span class="text-base truncate leading-none font-semibold text-stone-700">
                   {name}
+                </span>
+                <span class="text-sm font-semibold text-stone-700/50">
+                  {itemCount}
                 </span>
               </div>
             </div>

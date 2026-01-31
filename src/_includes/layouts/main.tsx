@@ -72,11 +72,18 @@ export default function Layout(
       if ("folder" in item) {
         const folder = item;
         const blocks = buildBlocks(folder.components);
+        const itemCount = folder.components.reduce((count, item) => {
+          if ("section" in item) {
+            return count;
+          }
+          return count + 1;
+        }, 0);
 
         return (
           <comp.cards.Folder
             size={folder.size}
             name={folder.name}
+            itemCount={itemCount}
           >
             {renderBlocks(blocks)}
           </comp.cards.Folder>
