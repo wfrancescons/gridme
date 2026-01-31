@@ -3,6 +3,7 @@ import type { CardProps } from "@/_components/Card.tsx";
 export type FolderProps = CardProps & {
   name: string;
   itemCount: number;
+  color?: "amber" | "blue" | "green" | "red" | "purple" | "neutral";
   children: JSX.Children;
 };
 
@@ -14,9 +15,18 @@ function generateFolderId() {
 }
 
 export default function Folder(
-  { name, itemCount, children, size, comp }: FolderProps,
+  { name, itemCount, color = "neutral", children, size, comp }: FolderProps,
 ) {
   const id = generateFolderId();
+
+  const colorsMap = {
+    amber: ["bg-amber-200", "fill-amber-300"],
+    blue: ["bg-blue-200", "fill-blue-300"],
+    green: ["bg-lime-200", "fill-lime-300"],
+    neutral: ["bg-stone-200", "fill-stone-300"],
+    red: ["bg-red-200", "fill-red-300"],
+    purple: ["bg-purple-200", "fill-purple-300"],
+  };
 
   return (
     <>
@@ -28,17 +38,17 @@ export default function Folder(
           className="h-full w-full cursor-pointer"
         >
           <div class="group/folder relative size-full overflow-hidden rounded-3xl">
-            <div class="absolute inset-0 z-0 bg-stone-200" />
+            <div class={`absolute inset-0 z-0 ${colorsMap[color][0]}`} />
 
             <div class="absolute inset-0 z-10 flex items-end justify-center pb-2">
-              <div class="relative h-full w-full [&>div]:absolute [&>div]:bottom-1 [&>div]:left-1/2 [&>div]:size-[85%] [&>div]:-translate-x-1/2 [&>div]:rounded-2xl [&>div]:outline-5 [&>div]:outline-white [&>div]:transition-all [&>div]:duration-500 group-hover/folder:[&>div]:bottom-3">
-                <div class="z-10 translate-y-2 -rotate-2 bg-stone-300"></div>
+              <div class="relative h-full w-full [&>div]:absolute [&>div]:bottom-1 [&>div]:left-1/2 [&>div]:size-[85%] [&>div]:-translate-x-1/2 [&>div]:rounded-2xl [&>div]:shadow-lg/30 [&>div]:transition-all [&>div]:duration-500 group-hover/folder:[&>div]:bottom-4">
+                <div class="z-10 translate-y-2 -rotate-2 bg-neutral-50"></div>
 
-                <div class="z-20 flex translate-y-6 rotate-1 flex-col gap-2 bg-stone-200 p-4">
-                  <div class="h-3 w-3/4 rounded-full bg-white/70"></div>
-                  <div class="h-3 w-full rounded-full bg-white/50"></div>
-                  <div class="h-3 w-5/6 rounded-full bg-white/50"></div>
-                  <div class="h-3 w-2/3 rounded-full bg-white/30"></div>
+                <div class="z-20 flex translate-y-6 rotate-1 flex-col gap-2 bg-neutral-50 p-4">
+                  <div class="h-2 w-3/4 rounded-full bg-black/10"></div>
+                  <div class="h-2 w-full rounded-full bg-black/5"></div>
+                  <div class="h-2 w-5/6 rounded-full bg-black/5"></div>
+                  <div class="h-2 w-2/3 rounded-full bg-black/3"></div>
                 </div>
               </div>
             </div>
@@ -63,16 +73,16 @@ export default function Folder(
                   width="100%"
                   height="100%"
                   rx="16"
-                  class="fill-stone-300"
+                  class={colorsMap[color][1]}
                   mask={`url(#folder-mask-${id})`}
                 />
               </svg>
 
               <div class="absolute bottom-0 left-0 flex flex-col gap-1 h-full w-full justify-end items-start p-4">
-                <span class="text-base truncate leading-none font-semibold text-stone-700">
+                <span class="text-base truncate leading-none font-semibold text-black/80">
                   {name}
                 </span>
-                <span class="text-sm font-semibold text-stone-700/50">
+                <span class="text-sm font-semibold text-black/50">
                   {itemCount}
                 </span>
               </div>
