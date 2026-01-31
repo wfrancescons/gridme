@@ -19,7 +19,7 @@ export default function Map(
       size={size}
       url={`https://www.google.com/maps/@${center[1]},${center[0]},${zoom}z`}
     >
-      <div className="w-full h-full bg-white p-2">
+      <div className="w-full h-full">
         <div className="relative w-full h-full overflow-hidden rounded-2xl">
           {/* Map */}
           <div
@@ -45,7 +45,7 @@ export default function Map(
 
           {/* Caption */}
           {caption && (
-            <div className="pointer-events-none absolute z-20 bottom-0 left-0 p-2">
+            <div className="pointer-events-none absolute z-20 bottom-0 left-0 p-3">
               <div className="inline-block max-w-full rounded-xl bg-white/45 backdrop-blur-sm px-3 py-2 shadow-md/10">
                 <span className="block text-zinc-700 text-sm/4 font-semibold truncate">
                   {caption}

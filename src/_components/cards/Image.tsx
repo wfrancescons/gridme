@@ -19,7 +19,7 @@ export default function Image(
 ) {
   return (
     <comp.Card size={size} url={url}>
-      <div className="w-full h-full flex flex-col overflow-hidden bg-white p-2">
+      <div className="w-full h-full flex flex-col overflow-hidden">
         <figure className="relative overflow-hidden rounded-2xl w-full h-full">
           <img
             src={src}
