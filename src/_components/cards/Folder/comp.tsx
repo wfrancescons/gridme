@@ -1,6 +1,6 @@
 import type { CardProps } from "@/_components/Card.tsx";
 
-type FolderProps = CardProps & {
+export type FolderProps = CardProps & {
   name: string;
   itemCount: number;
   children: JSX.Children;

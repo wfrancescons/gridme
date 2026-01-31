@@ -1,6 +1,6 @@
 import type { CardProps } from "@/_components/Card.tsx";
 
-type NoteProps = CardProps & {
+export type NoteProps = CardProps & {
   children: JSX.Children;
 };
 
