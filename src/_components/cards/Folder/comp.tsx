@@ -99,11 +99,9 @@ export default function Folder(
       <dialog
         id={id}
         closedby="any"
-        className={`fixed inset-0 m-0 p-0 backdrop:bg-transparent ${
-          colorsMap[color][0]
-        }/30 h-dvh w-screen max-h-none max-w-none grid items-end justify-center md:items-center
+        className="fixed inset-0 m-0 p-0 backdrop:bg-transparent bg-black/5 h-dvh w-screen max-h-none max-w-none grid items-end justify-center md:items-center
         overflow-clip pointer-events-none transition-discrete invisible opacity-0 backdrop-blur-none open:visible open:opacity-100 open:pointer-events-auto
-        open:backdrop-blur-sm starting:open:opacity-0 group transition-all duration-300 ease-in-out`}
+        open:backdrop-blur-sm starting:open:opacity-0 group transition-all duration-300 ease-in-out"
       >
         {/* Backdrop to close modal on outside click */}
         <form
@@ -122,14 +120,17 @@ export default function Folder(
       bg-neutral-50 w-screen h-dvh max-w-full md:max-w-4xl max-h-9/10 md:max-h-8/10 overflow-hidden flex flex-col
         rounded-t-2xl md:rounded-2xl shadow-xl">
           {/* Modal Header */}
-          <div className="grid grid-cols-3 items-center p-4">
-            <h2 className="text-center col-start-2 font-bold text-lg text-neutral-700">
+          <div className="flex items-center p-4">
+            <div className="w-10" /> {/* espaçador esquerdo */}
+
+            <h2 className="flex-1 text-center font-bold text-lg text-neutral-700">
               {name}
             </h2>
-            <form method="dialog" className="col-start-3 justify-self-end">
+
+            <form method="dialog" className="w-10 flex justify-end">
               <button
                 type="submit"
-                className="text-2xl hover:opacity-70 p-2 bg-neutral-400/20 text-neutral-500 rounded-full"
+                className="text-2xl hover:opacity-70 p-2 bg-neutral-400/20 text-neutral-500 rounded-full transition-transform active:scale-90 duration-150"
                 aria-label="Close"
               >
                 <img
