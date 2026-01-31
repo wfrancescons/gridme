@@ -41,7 +41,7 @@ export default function Folder(
             <div class={`absolute inset-0 z-0 ${colorsMap[color][0]}`} />
 
             <div class="absolute inset-0 z-10 flex items-end justify-center pb-2">
-              <div class="relative h-full w-full [&>div]:absolute [&>div]:bottom-1 [&>div]:left-1/2 [&>div]:size-[85%] [&>div]:-translate-x-1/2 [&>div]:rounded-2xl [&>div]:shadow-lg/30 [&>div]:transition-all [&>div]:duration-500 group-hover/folder:[&>div]:bottom-4">
+              <div class="relative h-full w-full *:absolute *:bottom-1 *:left-1/2 *:size-[85%] *:-translate-x-1/2 *:rounded-2xl *:shadow-lg/30 *:transition-all *:duration-500 group-hover/folder:*:bottom-4">
                 <div class="z-10 translate-y-2 -rotate-2 bg-neutral-50"></div>
 
                 <div class="z-20 flex translate-y-6 rotate-1 flex-col gap-2 bg-neutral-50 p-4">
@@ -82,11 +82,11 @@ export default function Folder(
                 <span
                   class={`text-base truncate leading-none font-semibold ${
                     colorsMap[color][2]
-                  }/80`}
+                  }/70`}
                 >
                   {name}
                 </span>
-                <span class={`text-sm font-semibold ${colorsMap[color][2]}/60`}>
+                <span class={`text-sm font-semibold ${colorsMap[color][2]}/50`}>
                   {itemCount}
                 </span>
               </div>
