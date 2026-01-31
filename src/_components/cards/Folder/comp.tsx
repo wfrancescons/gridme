@@ -56,7 +56,7 @@ export default function Folder(
             <div class="absolute bottom-0 left-0 z-20 h-[65%] w-full">
               <svg
                 viewBox="0 0 400 280"
-                class="h-full w-full"
+                class="h-full w-full drop-shadow-[0_0px_8px_rgba(0,0,0,0.3)]"
                 preserveAspectRatio="none"
               >
                 <defs>
@@ -122,9 +122,11 @@ export default function Folder(
       bg-neutral-50 w-screen h-dvh max-w-full md:max-w-4xl max-h-9/10 md:max-h-8/10 overflow-hidden flex flex-col
         rounded-t-2xl md:rounded-2xl shadow-xl">
           {/* Modal Header */}
-          <div className="flex items-center justify-between p-4 shrink-0">
-            <h2 className="font-bold text-lg text-neutral-700">{name}</h2>
-            <form method="dialog">
+          <div className="grid grid-cols-3 items-center p-4">
+            <h2 className="text-center col-start-2 font-bold text-lg text-neutral-700">
+              {name}
+            </h2>
+            <form method="dialog" className="col-start-3 justify-self-end">
               <button
                 type="submit"
                 className="text-2xl hover:opacity-70 p-2 bg-neutral-400/20 text-neutral-500 rounded-full"
