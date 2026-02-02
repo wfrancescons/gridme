@@ -34,7 +34,7 @@ export default function Map(
             className="absolute pointer-events-none inset-0 z-10 flex items-center justify-center bg-zinc-100 opacity-100 transition-opacity duration-1000"
           >
             <img
-              src="/img/map-placeholder.jpg"
+              src="/img/map-placeholder.png"
               alt="Map placeholder"
               className="w-full h-full object-cover"
               loading="lazy"
