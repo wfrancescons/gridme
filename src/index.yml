@@ -1,18 +1,28 @@
-name: Hello, I’m Gridme!
+name: Hello, I'm Gridme!
 description: I help you build a clean, customizable, and visually engaging personal hub for all your links, content, and highlights.
 avatar: /img/avatar.jpg # Image must have a 1:1 ratio; remember to update the favicon in _config.ts
 lang: en # Primary site language <html lang>
 
-metas:
-  # Ensure SITE_URL is defined in the .env file
-  title: "$ title"
-  description: "=description"
-  image: "/img/image-og.jpg"
-  generator: Gridme + Lume
-
 components:
   - section: Cards 💚
     subtitle: Cards size can be "square", "wide" or "large" # Optional
+
+  - folder:
+    size: square
+    name: DO NOT OPEN
+    color: amber
+    components:
+      - text:
+        size: wide
+        content: Teste
+
+      - folder:
+        size: square
+        name: DO NOT OPEN
+        components:
+          - text:
+            size: wide
+            content: Teste
 
   # Component sizes can be "square", "wide" or "large", except Sections, which do not need one
   - image:
@@ -28,8 +38,8 @@ components:
     # PRIVACY WARNING: do not use more than 3 decimal places for latitude/longitude
     # Higher precision may reveal your exact location in the frontend !!!!!!
     center: [-49.253, -25.434] # [lng, lat]
-    zoom: 11 # Optional
-    caption: Where I live 📍 # Optional
+    zoom: 9 # Optional
+    caption: Curitiba 📍 # Optional
 
   - note:
     size: wide
@@ -49,8 +59,15 @@ components:
       - text: git add
         completed: true
       - text: git commit
-        completed: false # Optional, default = false
+        completed: true # Optional, default = false
       - text: git push
+        completed: true
+      - text: git add
+        completed: true
+      - text: git commit
+        completed: true # Optional, default = false
+      - text: git push,
+        completed: true
 
   - text:
     size: square

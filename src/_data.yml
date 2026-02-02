@@ -1,1 +1,7 @@
 layout: layouts/main.tsx
+openGraphLayout: /layouts/og_images.tsx
+metas:
+  title: "$ title"
+  description: "=description"
+  image: "/index.png"
+  generator: Gridme + Lume
