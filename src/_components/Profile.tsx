@@ -12,6 +12,7 @@ export default function Profile({ name, img, description }: ProfileProps) {
           src={img}
           alt="Avatar"
           fetchpriority="high"
+          download-image
           transform-images="avif webp jpg 300"
         />
       </div>
