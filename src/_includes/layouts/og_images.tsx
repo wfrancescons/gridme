@@ -1,19 +1,30 @@
-type ogImageData = Lume.Data & {
+import { encodeBase64 } from "@std/encoding/base64";
+import { extname, join } from "@std/path";
+
+type ogImageData = Lume.Site & {
   name: string;
   description: string;
   avatar: string;
+  dirs: {
+    src: string;
+  };
 };
 
 export default async function ogImage(
-  { name, description, avatar }: ogImageData,
+  { name, description, avatar, dirs }: ogImageData,
 ) {
-  const bytes = await Deno.readFile(`${Deno.cwd()}/src/${avatar}`);
+  const imagePath = join(dirs.src, avatar);
+  const bytes = await Deno.readFile(imagePath);
 
-  const base64 = btoa(
-    String.fromCharCode(...bytes),
-  );
+  let ext = extname(imagePath).slice(1).toLowerCase();
 
-  const dataUrl = `data:image/jpeg;base64,${base64}`;
+  if (ext === "jpg") {
+    ext = "jpeg";
+  }
+
+  const base64 = encodeBase64(bytes);
+
+  const imageDataUrl = `data:image/${ext};base64,${base64}`;
 
   return (
     <div
@@ -45,7 +56,7 @@ export default async function ogImage(
         }}
       >
         <img
-          src={dataUrl}
+          src={imageDataUrl}
           alt="Avatar"
           style={{
             width: "100%",

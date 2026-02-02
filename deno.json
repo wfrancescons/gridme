@@ -1,6 +1,8 @@
 {
   "imports": {
     "@deno/gfm": "jsr:@deno/gfm@^0.11.0",
+    "@std/encoding": "jsr:@std/encoding@^1.0.10",
+    "@std/path": "jsr:@std/path@^1.1.4",
     "cheerio": "npm:cheerio@^1.2.0",
     "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@c733108e1498234171f6af7a8fb6141eae98160e/",
     "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.14/jsx-runtime.ts",
