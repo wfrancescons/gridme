@@ -55,7 +55,7 @@ export default function Layout(
       <section className="flex flex-col gap-5 p-2">
         {(block.title || block.subtitle) && (
           <comp.Section
-            title={block.title}
+            title={block.title!}
             subtitle={block.subtitle}
           />
         )}
@@ -105,6 +105,15 @@ export default function Layout(
         );
       }
 
+      if ("link" in item) {
+        return (
+          <comp.cards.Link
+            size={item.size}
+            url={item.url}
+          />
+        );
+      }
+
       if ("map" in item) {
         hasMapCard = true;
         return (
@@ -122,6 +131,15 @@ export default function Layout(
           <comp.cards.Note size={item.size}>
             {item.content}
           </comp.cards.Note>
+        );
+      }
+
+      if ("telegram" in item) {
+        return (
+          <comp.cards.Telegram
+            size={item.size}
+            url={item.url}
+          />
         );
       }
 
@@ -172,7 +190,7 @@ export default function Layout(
           </>
         )}
 
-        <script type="module" src="/script.js" inline />
+        <script type="module" src="/script.js" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
 
