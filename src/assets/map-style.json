@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "metadata": {},
+  "metadata": {"maputnik:renderer": "mbgljs"},
   "sources": {
     "ne2_shaded": {
       "maxzoom": 6,
@@ -2072,7 +2072,7 @@
       "source-layer": "building",
       "minzoom": 13,
       "maxzoom": 14,
-      "layout": {"visibility": "visible"},
+      "layout": {"visibility": "none"},
       "paint": {
         "fill-color": "hsl(35,8%,85%)",
         "fill-outline-color": [
