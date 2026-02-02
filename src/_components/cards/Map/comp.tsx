@@ -19,24 +19,24 @@ export default function Map(
       size={size}
       url={`https://www.google.com/maps/@${center[1]},${center[0]},${zoom}z`}
     >
-      <div className="w-full h-full">
-        <div className="relative w-full h-full overflow-hidden rounded-2xl">
+      <div class="w-full h-full">
+        <div class="relative w-full h-full overflow-hidden rounded-2xl">
           {/* Map */}
           <div
             data-map-infos={JSON.stringify(mapInfos)}
-            className="w-full h-full"
+            class="w-full h-full"
           >
           </div>
 
           {/* Placeholder */}
           <div
             data-map-placeholder
-            className="absolute pointer-events-none inset-0 z-10 flex items-center justify-center bg-zinc-100 opacity-100 transition-opacity duration-1000"
+            class="absolute pointer-events-none inset-0 z-10 flex items-center justify-center bg-zinc-100 opacity-100 transition-opacity duration-1000"
           >
             <img
               src="/img/map-placeholder.png"
               alt="Map placeholder"
-              className="w-full h-full object-cover"
+              class="w-full h-full object-cover"
               loading="lazy"
               fetchpriority="high"
               transform-images="avif webp jpg 500"
@@ -45,9 +45,9 @@ export default function Map(
 
           {/* Caption */}
           {caption && (
-            <div className="pointer-events-none absolute z-20 bottom-0 left-0 p-3">
-              <div className="w-fit rounded-xl bg-white/45 backdrop-blur-sm px-3 py-2 shadow-md/10">
-                <span className="block text-zinc-700 text-sm/4 font-semibold truncate">
+            <div class="pointer-events-none absolute z-20 bottom-0 left-0 p-3">
+              <div class="w-fit rounded-xl bg-white/45 backdrop-blur-sm px-3 py-2 shadow-md/10">
+                <span class="block text-zinc-700 text-sm/4 font-semibold truncate">
                   {caption}
                 </span>
               </div>

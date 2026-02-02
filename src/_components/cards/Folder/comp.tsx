@@ -35,7 +35,7 @@ export default function Folder(
         <button
           type="button"
           data-folder-id={id}
-          className="h-full w-full cursor-pointer"
+          class="h-full w-full cursor-pointer"
         >
           <div class="group/folder relative size-full overflow-hidden rounded-3xl">
             <div class={`absolute inset-0 z-0 ${colorsMap[color][0]}`} />
@@ -99,43 +99,43 @@ export default function Folder(
       <dialog
         id={id}
         closedby="any"
-        className="fixed inset-0 m-0 p-0 backdrop:bg-transparent bg-black/5 h-dvh w-screen max-h-none max-w-none grid items-end justify-center md:items-center
+        class="fixed inset-0 m-0 p-0 backdrop:bg-transparent bg-black/5 h-dvh w-screen max-h-none max-w-none grid items-end justify-center md:items-center
         overflow-clip pointer-events-none transition-discrete invisible opacity-0 backdrop-blur-none open:visible open:opacity-100 open:pointer-events-auto
         open:backdrop-blur-sm starting:open:opacity-0 group transition-all duration-300 ease-in-out"
       >
         {/* Backdrop to close modal on outside click */}
         <form
           method="dialog"
-          className="fixed inset-0 -z-10 cursor-default"
+          class="fixed inset-0 -z-10 cursor-default"
         >
           <button
             type="submit"
-            className="h-full w-full"
+            class="h-full w-full"
             aria-label="Close"
           />
         </form>
 
         {/* Modal Box */}
-        <div className="scale-90 group-open:scale-100 transition-transform duration-300 ease-in-out origin-bottom
+        <div class="scale-90 group-open:scale-100 transition-transform duration-300 ease-in-out origin-bottom
       bg-neutral-50 w-screen h-dvh max-w-full md:max-w-4xl max-h-9/10 md:max-h-8/10 overflow-hidden flex flex-col
         rounded-t-2xl md:rounded-2xl shadow-xl">
           {/* Modal Header */}
-          <div className="flex items-center p-4">
-            <div className="w-10" /> {/* espaçador esquerdo */}
+          <div class="flex items-center p-4">
+            <div class="w-10" /> {/* espaçador esquerdo */}
 
-            <h2 className="flex-1 text-center font-bold text-lg text-neutral-700">
+            <h2 class="flex-1 text-center font-bold text-lg text-neutral-700">
               {name}
             </h2>
 
-            <form method="dialog" className="w-10 flex justify-end">
+            <form method="dialog" class="w-10 flex justify-end">
               <button
                 type="submit"
-                className="text-2xl hover:opacity-70 p-2 bg-neutral-400/20 text-neutral-500 rounded-full transition-transform active:scale-90 duration-150"
+                class="text-2xl hover:opacity-70 p-2 bg-neutral-400/20 text-neutral-500 rounded-full transition-transform active:scale-90 duration-150"
                 aria-label="Close"
               >
                 <img
                   src="/icons/close.svg"
-                  className="h-4.5 w-4.5"
+                  class="h-4.5 w-4.5"
                   alt=""
                   inline
                 />
@@ -144,7 +144,7 @@ export default function Folder(
           </div>
 
           {/* Modal Body */}
-          <div className="flex-1 flex flex-col gap-10 overflow-y-auto p-2 overscroll-contain">
+          <div class="flex-1 flex flex-col gap-10 overflow-y-auto p-2 overscroll-contain">
             {children}
           </div>
         </div>

@@ -52,7 +52,7 @@ export default function Layout(
 
   function renderBlocks(blocks: Block[]) {
     return blocks.map((block) => (
-      <section className="flex flex-col gap-5 p-2">
+      <section class="flex flex-col gap-5 p-2">
         {(block.title || block.subtitle) && (
           <comp.Section
             title={block.title!}
@@ -195,15 +195,15 @@ export default function Layout(
       </head>
 
       <body>
-        <div className="min-h-screen flex justify-center p-6 bg-neutral-50">
-          <div className="w-full max-w-5xl flex flex-col">
+        <div class="min-h-screen flex justify-center p-6 bg-neutral-50">
+          <div class="w-full max-w-5xl flex flex-col">
             <comp.Profile
               img={avatar}
               name={name}
               description={description}
             />
 
-            <main className="w-full flex flex-col gap-10 p-4 items-center justify-center">
+            <main class="w-full flex flex-col gap-10 p-4 items-center justify-center">
               {renderedBlocks}
             </main>
 

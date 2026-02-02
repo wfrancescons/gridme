@@ -5,7 +5,7 @@ export type ProfileProps = {
 };
 export default function Profile({ name, img, description }: ProfileProps) {
   return (
-    <header className="flex flex-col items-center text-center gap-4 pt-6 pb-4">
+    <header class="flex flex-col items-center text-center gap-4 pt-6 pb-4">
       <div class="size-26 rounded-full border-4 border-white shadow-lg/10 overflow-hidden">
         <img
           class="size-full object-cover"
@@ -16,9 +16,9 @@ export default function Profile({ name, img, description }: ProfileProps) {
           transform-images="avif webp jpg 300"
         />
       </div>
-      <div className="flex flex-col gap-2">
-        <h1 className="text-3xl font-bold text-neutral-900">{name}</h1>
-        <p className="text-base text-neutral-500 max-w-sm">{description}</p>
+      <div class="flex flex-col gap-2">
+        <h1 class="text-3xl font-bold text-neutral-900">{name}</h1>
+        <p class="text-base text-neutral-500 max-w-sm">{description}</p>
       </div>
     </header>
   );

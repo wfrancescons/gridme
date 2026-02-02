@@ -4,8 +4,8 @@ export type GridProps = {
 
 export default function Grid({ children }: GridProps) {
   return (
-    <div className="flex justify-center">
-      <div className="card-grid">
+    <div class="flex justify-center">
+      <div class="card-grid">
         {children}
       </div>
     </div>
