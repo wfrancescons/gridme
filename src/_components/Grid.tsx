@@ -1,4 +1,4 @@
-type GridProps = {
+export type GridProps = {
   children: JSX.Children;
 };
 

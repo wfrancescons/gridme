@@ -42,10 +42,7 @@ export default function Image(
             </figcaption>
 
             {url && (
-              <div
-                href={url}
-                className="text-white bg-black/25 p-1 rounded-full backdrop-blur-sm outline-2 outline-white/20"
-              >
+              <div className="text-white bg-black/25 p-1 rounded-full backdrop-blur-sm outline-2 outline-white/20">
                 <img
                   src="/icons/arrow-up-right.svg"
                   className="w-4 h-4"
