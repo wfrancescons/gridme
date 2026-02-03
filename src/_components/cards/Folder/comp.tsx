@@ -56,7 +56,7 @@ export default function Folder(
             <div class="absolute bottom-0 left-0 z-20 h-[65%] w-full">
               <svg
                 viewBox="0 0 400 280"
-                class="h-full w-full drop-shadow-[0_0px_8px_rgba(0,0,0,0.3)]"
+                class="h-full w-full drop-shadow-[0_0px_5px_rgba(0,0,0,0.2)]"
                 preserveAspectRatio="none"
               >
                 <defs>
@@ -121,7 +121,7 @@ export default function Folder(
         rounded-t-2xl md:rounded-2xl shadow-xl">
           {/* Modal Header */}
           <div class="flex items-center p-4">
-            <div class="w-10" /> {/* espaçador esquerdo */}
+            <div class="w-10" />
 
             <h2 class="flex-1 text-center font-bold text-lg text-neutral-700">
               {name}
