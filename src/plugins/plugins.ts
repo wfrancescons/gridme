@@ -9,6 +9,7 @@ import metas from "lume/plugins/metas.ts";
 import minifyHTML from "lume/plugins/minify_html.ts";
 import ogImages from "lume/plugins/og_images.ts";
 import picture from "lume/plugins/picture.ts";
+import relativeUrls from "lume/plugins/relative_urls.ts";
 import robots from "lume/plugins/robots.ts";
 import seo from "lume/plugins/seo.ts";
 import tailwindcss from "lume/plugins/tailwindcss.ts";
@@ -52,6 +53,7 @@ export default function plugins() {
         keep_html_and_head_opening_tags: true,
       },
     }));
+    site.use(relativeUrls());
 
     site.add("img");
     site.add("style.css");
