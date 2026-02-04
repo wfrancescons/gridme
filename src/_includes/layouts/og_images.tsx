@@ -39,8 +39,6 @@ export default async function ogImage(
     ext = "jpeg";
   }
 
-  console.log(url.href);
-
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error("Failed to load image");
