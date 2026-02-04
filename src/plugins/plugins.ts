@@ -15,6 +15,7 @@ import tailwindcss from "lume/plugins/tailwindcss.ts";
 import terser from "lume/plugins/terser.ts";
 import transformImages from "lume/plugins/transform_images.ts";
 import downloadImages from "./downloadImages.ts";
+import generateFavicon from "./generateFavicon.ts";
 
 export default function plugins() {
   return (site: Lume.Site) => {
@@ -38,9 +39,9 @@ export default function plugins() {
     site.use(transformImages());
     site.use(metas());
     site.use(inline());
-    site.use(favicon({
-      input: "/img/avatar.jpg",
-    }));
+    // Generate favicon from data.avatar
+    site.use(generateFavicon());
+    site.use(favicon());
     site.use(robots());
     site.use(seo({
       options: { body: false },
