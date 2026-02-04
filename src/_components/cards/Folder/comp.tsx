@@ -56,7 +56,7 @@ export default function Folder(
             <div class="absolute bottom-0 left-0 z-20 h-[65%] w-full">
               <svg
                 viewBox="0 0 400 280"
-                class="h-full w-full drop-shadow-[0_0px_5px_rgba(0,0,0,0.2)]"
+                class="h-full w-full drop-shadow-[0_0px_3px_rgba(0,0,0,0.15)]"
                 preserveAspectRatio="none"
               >
                 <defs>
