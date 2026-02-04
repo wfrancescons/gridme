@@ -1,5 +1,4 @@
-import { encodeBase64 } from "@std/encoding/base64";
-import { extname, join, toFileUrl } from "@std/path";
+import imageToDataURL from "@/utils/imageToDataURL.ts";
 
 type ogImageData = Lume.Site & {
   name: string;
@@ -13,41 +12,7 @@ type ogImageData = Lume.Site & {
 export default async function ogImage(
   { name, description, avatar, dirs }: ogImageData,
 ) {
-  function isHttpUrl(value: string): boolean {
-    try {
-      const url = new URL(value);
-      return url.protocol === "http:" || url.protocol === "https:";
-    } catch {
-      return false;
-    }
-  }
-
-  let url: URL;
-  let ext: string;
-
-  if (isHttpUrl(avatar)) {
-    url = new URL(avatar);
-    ext = extname(url.pathname).slice(1).toLowerCase();
-  } else {
-    const imagePath = join(dirs.src, avatar);
-
-    url = toFileUrl(imagePath);
-    ext = extname(imagePath).slice(1).toLowerCase();
-  }
-
-  if (ext === "jpg") {
-    ext = "jpeg";
-  }
-
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error("Failed to load image");
-  }
-
-  const bytes = new Uint8Array(await response.arrayBuffer());
-  const base64 = encodeBase64(bytes);
-
-  const imageDataUrl = `data:image/${ext};base64,${base64}`;
+  const imageDataUrl = await imageToDataURL(avatar, dirs.src);
 
   return (
     <div
