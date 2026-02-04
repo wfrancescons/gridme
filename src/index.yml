@@ -1,126 +1,173 @@
 name: Hello, I'm Gridme!
-description: I help you build a clean, customizable, and visually engaging personal hub for all your links, content, and highlights.
+description: Organize your ideas, links, and projects in a clean, customizable, and personal card grid, designed for creative developers and built with Lume + Deno.
 avatar: /img/avatar.jpg # Image must have a 1:1 ratio; remember to update the favicon in _config.ts
-lang: en # Primary site language <html lang>
+lang: en # Primary site language <html lang>. Default = "en"
 
 components:
-  - section: Cards 💚
-    subtitle: Cards size can be "square", "wide" or "large" # Optional
-
-  - folder:
-    size: square
-    name: DO NOT OPEN
-    color: amber
-    components:
-      - text:
-        size: wide
-        content: Teste
-
-      - folder:
-        size: square
-        name: DO NOT OPEN
-        components:
-          - text:
-            size: wide
-            content: Teste
+  - section: Cards ❤️
+    subtitle: Card sizes can be "square", "wide", or "large" # Optional
 
   # Component sizes can be "square", "wide" or "large", except Sections, which do not need one
   - image:
-    size: wide
+    size: large
     # Make sure the image is in the img folder
     src: img/1.jpg
     alt: Alt text for your image # Optional
-    caption: I'm an image card! # Optional
-    url: https://example.com # Optional
-
-  - map:
-    size: large
-    # PRIVACY WARNING: do not use more than 3 decimal places for latitude/longitude
-    # Higher precision may reveal your exact location in the frontend !!!!!!
-    center: [-49.253, -25.434] # [lng, lat]
-    zoom: 9 # Optional
-    caption: Curitiba 📍 # Optional
+    caption: I’m an image card with a link # Optional
+    url: https://unsplash.com/photos/airplane-wing-flying-over-a-vast-desert-landscape-eraSceLbwFo # Optional
 
   - note:
     size: wide
     content: This is a note card and you can copy the content 😉
 
+  - todo:
+    size: square
+    items:
+      - text: git add
+        completed: true
+      - text: git commit
+        completed: false # Optional, default = false
+      - text: git push
+
   - text:
     size: square
     content: Text card here! 👋
     # Color can be: "amber" | "blue" | "green" | "red" | "purple" | "neutral"
-    color: green # Optional, default = "neutral"
+    color: blue # Optional, default = "neutral"
     # Text sizes can be: "small" | "medium" | "large" | "extra-large"
     textSize: extra-large # Optional, default = "medium"
 
-  - todo:
-    size: wide
-    items:
-      - text: git add
-        completed: true
-      - text: git commit
-        completed: true # Optional, default = false
-      - text: git push
-        completed: true
-      - text: git add
-        completed: true
-      - text: git commit
-        completed: true # Optional, default = false
-      - text: git push,
-        completed: true
-
-  - text:
-    size: square
-    content: Another text card 🎉
-
-  - section: More cards 🥰
+  - section: This is a Section 📓
+    subtitle: Add a section to organize topics
 
   - text:
     size: wide
-    content: Spark your imagination with tiny ideas ✨
-    color: purple
+    content: You can also group cards into folders
+    color: amber
     textSize: large
 
-  - note:
-    size: wide
-    content: Remember to water your plants 🌱 They thrive on consistency!
+  - folder:
+    name: I'm a folder
+    components:
+      - section: This is a section inside a folder
 
-  - todo:
-    size: wide
-    items:
-      - text: Write a short story
-        completed: false
-      - text: Illustrate a character
-        completed: true
-      - text: Share with a friend
-        completed: false
+      - text:
+        size: wide
+        content: Folders can contain sections and other cards 🗂️
 
-  - image:
-    size: large
-    src: img/2.jpg
+      - text:
+        size: wide
+        color: purple
+        content: Folders can also be nested inside other folders
+        textSize: "extra-large"
+
+      - folder:
+        size: large
+        name: Nested folder
+        color: blue
+        components:
+          - text:
+            size: square
+            color: red
+            content: Hi 👋
+
+  - section: Customization 🎨
 
   - text:
-    size: square
-    content: Coffee ☕ or tea? Decisions matter!
-    color: amber
+    size: large
+    color: purple
+    content: I'm a text card with medium text and purple background
     textSize: medium
 
-  - note:
+  - folder:
     size: square
-    content: "<b>Fun fact</b>: Octopuses have 3 hearts! ❤️"
+    name: I'm a folder
+    color: blue
+    components:
+      - text:
+        size: wide
+        color: neutral
+        content: I'm a text card
+        textSize: medium
+
+  - folder:
+    size: square
+    name: I'm a folder
+    color: amber
+    components:
+      - text:
+        size: square
+        color: green
+        content: I'm a text card
+        textSize: small
+
+  - text:
+    size: wide
+    color: neutral
+    content: I'm a text card with extra-large text and neutral background
+    textSize: extra-large
+
+  - folder:
+    size: wide
+    name: I'm a folder
+    color: purple
+    components:
+      - text:
+        size: large
+        color: red
+        content: I'm a text card
+        textSize: extra-large
+
+  - text:
+    size: square
+    color: blue
+    content: I'm a text card with small text and blue background
+    textSize: small
+
+  - text:
+    size: square
+    color: amber
+    content: I'm a text card with medium text and purple background
+    textSize: medium
+
+  - section: Smart Cards ✨
+    subtitle: Smart Cards automatically render information from their input data
+
+  - link:
+    size: large
+    url: https://boxdgrid.deno.dev/
+
+  - map:
+    size: wide
+    # PRIVACY WARNING: do not use more than 3 decimal places for latitude/longitude
+    # Higher precision may reveal your exact location in the frontend !!!!!!
+    center: [-49.253, -25.434] # [lng, lat]
+    zoom: 12 # Optional
+    caption: This is a map card 📍 # Optional
+
+  - telegram:
+    size: wide
+    url: https://t.me/telelastfmbot
+
+  - text:
+    size: wide
+    content: More cards coming soon 👀
+    color: blue
+
+  - section: Want to build your own?
 
   - text:
     size: large
-    content: Dream big, start small, act now 🏃‍♂️
-    color: red
-    textSize: extra-large
+    content: Visit the project on GitHub
+    color: green
+    textSize: large
 
-  - todo:
+  - link:
     size: wide
-    items:
-      - text: Morning jog
-        completed: true
-      - text: Read 20 pages
-        completed: false
-      - text: Meditate
-        completed: false
+    url: https://github.com/wfrancescons/gridme
+
+  - text:
+    size: wide
+    content: Leave a star on the repository ✨
+    color: amber
+    textSize: large
