@@ -171,7 +171,7 @@ export default function Layout(
   const renderedBlocks = renderBlocks(blocks);
 
   return (
-    <html lang={lang}>
+    <html lang={lang || "en"}>
       <head>
         <title>{`${name} - Gridme`}</title>
         <link rel="stylesheet" href="/style.css" />
