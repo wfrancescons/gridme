@@ -110,6 +110,7 @@ export default async function Telegram(
         group-[.card-square]/card:hidden
         group-[.card-large]/card:w-1/2
         self-center
+        p-2
         ">
           <img
             src={telegramData.image}
@@ -121,7 +122,7 @@ export default async function Telegram(
             loading="lazy"
             fetchpriority="auto"
             download-image
-            transform-images="avif webp jpg 200"
+            transform-images="avif webp jpg 250"
           />
         </div>
       </div>
