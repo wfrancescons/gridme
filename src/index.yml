@@ -71,65 +71,6 @@ components:
             color: red
             content: Hi 👋
 
-  - section: Customization 🎨
-
-  - text:
-    size: large
-    color: purple
-    content: I'm a text card with medium text and purple background
-    textSize: medium
-
-  - folder:
-    size: square
-    name: I'm a folder
-    color: blue
-    components:
-      - text:
-        size: wide
-        color: neutral
-        content: I'm a text card
-        textSize: medium
-
-  - folder:
-    size: square
-    name: I'm a folder
-    color: amber
-    components:
-      - text:
-        size: square
-        color: green
-        content: I'm a text card
-        textSize: small
-
-  - text:
-    size: wide
-    color: neutral
-    content: I'm a text card with extra-large text and neutral background
-    textSize: extra-large
-
-  - folder:
-    size: wide
-    name: I'm a folder
-    color: purple
-    components:
-      - text:
-        size: large
-        color: red
-        content: I'm a text card
-        textSize: extra-large
-
-  - text:
-    size: square
-    color: blue
-    content: I'm a text card with small text and blue background
-    textSize: small
-
-  - text:
-    size: square
-    color: amber
-    content: I'm a text card with medium text and purple background
-    textSize: medium
-
   - section: Smart Cards ✨
     subtitle: Smart Cards automatically render information from their input data
 
@@ -156,15 +97,15 @@ components:
 
   - section: Want to build your own?
 
-  - text:
-    size: large
-    content: Visit the project on GitHub
-    color: green
-    textSize: large
-
   - link:
-    size: wide
+    size: large
     url: https://github.com/wfrancescons/gridme
+
+  - text:
+    size: wide
+    content: Visit the project on GitHub
+    color: neutral
+    textSize: large
 
   - text:
     size: wide
