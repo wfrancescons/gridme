@@ -40,16 +40,20 @@ export default function Folder(
           <div class="group/folder relative size-full overflow-hidden rounded-3xl">
             <div class={`absolute inset-0 z-0 ${colorsMap[color][0]}`} />
 
-            <div class="absolute inset-0 z-10 flex items-end justify-center pb-2">
-              <div class="relative h-full w-full *:absolute *:bottom-1 *:left-1/2 *:size-[85%] *:-translate-x-1/2 *:rounded-2xl *:shadow-lg/30 *:transition-all *:duration-500 group-hover/folder:*:bottom-4">
-                <div class="z-10 translate-y-2 -rotate-2 bg-neutral-50"></div>
-
-                <div class="z-20 flex translate-y-6 rotate-1 flex-col gap-2 bg-neutral-50 p-4">
-                  <div class="h-2 w-3/4 rounded-full bg-black/10"></div>
-                  <div class="h-2 w-full rounded-full bg-black/5"></div>
-                  <div class="h-2 w-5/6 rounded-full bg-black/5"></div>
-                  <div class="h-2 w-2/3 rounded-full bg-black/3"></div>
-                </div>
+            <div class="absolute inset-0 z-10 flex items-start justify-start p-4">
+              <div class="relative w-full h-1/2 flex items-start justify-center -space-x-15 *:rounded-lg *:shadow-lg/30">
+                {Array.from({ length: Math.min(itemCount, 3) }).map((_, i) => (
+                  <div
+                    class={`w-40 aspect-3/4 z-${(i + 1) * 10} flex ${
+                      i % 2 === 0 ? "rotate-1" : "-rotate-1"
+                    } flex-col gap-2 bg-neutral-50 p-4 mt-4 group-hover/folder:mt-0 transition-all duration-500 ease-in-out`}
+                  >
+                    <div class="h-1.5 w-3/4 rounded-full bg-black/10" />
+                    <div class="h-1.5 w-full rounded-full bg-black/5" />
+                    <div class="h-1.5 w-5/6 rounded-full bg-black/5" />
+                    <div class="h-1.5 w-2/3 rounded-full bg-black/3" />
+                  </div>
+                ))}
               </div>
             </div>
 
