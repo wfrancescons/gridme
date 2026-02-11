@@ -103,9 +103,9 @@ export default function Folder(
       <dialog
         id={id}
         closedby="any"
-        class="fixed inset-0 m-0 p-0 backdrop:bg-transparent bg-black/5 h-dvh w-screen max-h-none max-w-none grid items-end justify-center md:items-center
-        overflow-clip pointer-events-none transition-discrete invisible opacity-0 backdrop-blur-none open:visible open:opacity-100 open:pointer-events-auto
-        open:backdrop-blur-sm starting:open:opacity-0 group transition-all duration-300 ease-in-out"
+        class="fixed inset-0 m-0 p-0 backdrop:bg-transparent bg-black/10 h-dvh w-screen max-h-none max-w-none grid items-end justify-center md:items-center
+        overflow-clip pointer-events-none transition-discrete invisible opacity-0 open:visible open:opacity-100 open:pointer-events-auto
+        starting:open:opacity-0 group transition-all duration-300 ease-in-out"
       >
         {/* Backdrop to close modal on outside click */}
         <form
