@@ -1,7 +1,7 @@
 import type { CardProps } from "@/_components/Card.tsx";
 
 export type NoteProps = CardProps & {
-  children: JSX.Children;
+  content: string;
 };
 
 let noteId = 0;
@@ -11,7 +11,7 @@ function generateNoteId() {
   return `note-${noteId}`;
 }
 
-export default function Note({ children, size, comp }: NoteProps) {
+export default function Note({ content, size, comp }: NoteProps) {
   const id = generateNoteId();
 
   return (
@@ -43,7 +43,11 @@ export default function Note({ children, size, comp }: NoteProps) {
           class="flex-1 px-4 py-3 bg-amber-100 text-zinc-600 overflow-y-auto"
           data-note-content={id}
         >
-          <p>{children}</p>
+          {content.split("\n").map((line) => (
+            <p>
+              {line}
+            </p>
+          ))}
         </div>
       </div>
     </comp.Card>

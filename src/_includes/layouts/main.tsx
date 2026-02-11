@@ -128,9 +128,10 @@ export default function Layout(
 
       if ("note" in item) {
         return (
-          <comp.cards.Note size={item.size}>
-            {item.content}
-          </comp.cards.Note>
+          <comp.cards.Note
+            size={item.size}
+            content={item.content}
+          />
         );
       }
 

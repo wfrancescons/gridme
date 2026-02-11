@@ -16,9 +16,13 @@ export default function Profile({ name, img, description }: ProfileProps) {
           transform-images="avif webp jpg 300"
         />
       </div>
-      <div class="flex flex-col gap-2">
+      <div class="flex flex-col gap-2 max-w-sm text-base text-neutral-500">
         <h1 class="text-3xl font-bold text-neutral-900">{name}</h1>
-        <p class="text-base text-neutral-500 max-w-sm">{description}</p>
+        {description.split("\n").map((line) => (
+          <p>
+            {line}
+          </p>
+        ))}
       </div>
     </header>
   );
