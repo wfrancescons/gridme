@@ -18,7 +18,7 @@ export default function Todo({ items, size, comp }: TodoProps) {
     <comp.Card size={size}>
       <div class="w-full h-full flex flex-col overflow-hidden">
         {/* Header */}
-        <div class="flex flex-row justify-between bg-stone-200 p-4 items-center">
+        <div class="flex flex-row justify-between bg-stone-200 p-3 items-center">
           <h3 class="font-semibold leading-tight text-stone-900">To-do</h3>
 
           <div class="flex flex-row items-center gap-1">
@@ -50,7 +50,7 @@ export default function Todo({ items, size, comp }: TodoProps) {
         </div>
 
         {/* Body */}
-        <div class="flex-1 px-4 py-3 bg-stone-100 text-zinc-600 flex flex-col gap-2 overflow-y-auto">
+        <div class="flex-1 px-3 py-2 bg-stone-100 text-zinc-600 flex flex-col gap-2 overflow-y-auto">
           {items.map((item, index) => (
             <div key={index} class="flex items-center gap-3">
               <div

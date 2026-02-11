@@ -17,7 +17,7 @@ export default function Note({ content, size, comp }: NoteProps) {
   return (
     <comp.Card size={size}>
       <div class="w-full h-full flex flex-col overflow-hidden">
-        <div class="flex flex-row justify-between bg-amber-200 p-4 items-center">
+        <div class="flex flex-row justify-between bg-amber-200 p-3 items-center">
           <h3 class="font-semibold leading-tight text-amber-950">Note</h3>
           <div class="flex flex-row-reverse gap-1 justify-center items-center">
             <button
@@ -40,7 +40,7 @@ export default function Note({ content, size, comp }: NoteProps) {
         </div>
 
         <div
-          class="flex-1 px-4 py-3 bg-amber-100 text-zinc-600 overflow-y-auto"
+          class="flex-1 px-3 py-2 bg-amber-100 text-zinc-600 overflow-y-auto"
           data-note-content={id}
         >
           {content.split("\n").map((line) => (
