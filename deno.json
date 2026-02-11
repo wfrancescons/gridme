@@ -4,9 +4,9 @@
     "@std/encoding": "jsr:@std/encoding@^1.0.10",
     "@std/path": "jsr:@std/path@^1.1.4",
     "cheerio": "npm:cheerio@^1.2.0",
-    "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@c733108e1498234171f6af7a8fb6141eae98160e/",
+    "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.1/",
     "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.14/jsx-runtime.ts",
-    "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@e222628cf3a1b53a6b4f92cafc7b13b40dd208aa/",
+    "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@0.14.15/",
     "@/": "./src/"
   },
   "permissions": {
@@ -55,7 +55,7 @@
   ],
   "lint": {
     "plugins": [
-      "https://cdn.jsdelivr.net/gh/lumeland/lume@c733108e1498234171f6af7a8fb6141eae98160e/lint.ts"
+      "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.1/lint.ts"
     ],
     "rules": {
       "exclude": [
