@@ -196,15 +196,15 @@ export default function Layout(
       </head>
 
       <body>
-        <div class="min-h-screen flex justify-center p-6 bg-neutral-50">
-          <div class="w-full max-w-5xl flex flex-col">
+        <div class="flex min-h-screen justify-center bg-neutral-50 p-6">
+          <div class="flex w-full max-w-5xl flex-col">
             <comp.Profile
               img={avatar}
               name={name}
               description={description}
             />
 
-            <main class="w-full flex flex-col gap-10 p-4 items-center justify-center">
+            <main class="flex w-full flex-col items-center justify-center gap-10 p-4">
               {renderedBlocks}
             </main>
 

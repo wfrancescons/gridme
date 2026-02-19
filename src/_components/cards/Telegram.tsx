@@ -47,47 +47,33 @@ export default async function Telegram(
 
   return (
     <comp.Card size={size}>
-      <div class="
-      h-full w-full overflow-hidden p-4
-      bg-sky-100
-      flex flex-row gap-1 justify-between
-      ">
-        <div class="flex flex-col justify-between flex-1">
+      <div class="flex h-full w-full flex-row justify-between gap-1 overflow-hidden bg-sky-100 p-4">
+        <div class="flex flex-1 flex-col justify-between">
           {/* Header */}
           <div class="flex flex-row gap-2">
-            <img src="/icons/telegram.svg" class="w-5 h-5" inline />
+            <img src="/icons/telegram.svg" class="h-5 w-5" inline />
             <span class="font-semibold text-neutral-700/80 text-sm">
               Telegram
             </span>
           </div>
 
           {/* Telegram Infos */}
-          <div class=" ">
-            <div class="flex flex-col items-start text-start
-          ">
-              <span class="font-bold text-neutral-800 text-base group-[.card-large]/card:text-lg">
-                {telegramData.title}
-              </span>
-              <span class="group-[.card-square]/card:hidden font-semibold text-neutral-700/50 text-xs group-[.card-large]/card:text-md">
-                {`@${telegramParsed.username}`}
-              </span>
-            </div>
+          <div class="flex flex-col items-start text-start">
+            <span class="font-bold text-base text-neutral-800 group-[.card-large]/card:text-lg">
+              {telegramData.title}
+            </span>
+            <span class="font-semibold text-neutral-700/50 text-xs group-[.card-square]/card:hidden group-[.card-large]/card:text-md">
+              {`@${telegramParsed.username}`}
+            </span>
           </div>
 
           {/* Action */}
-          <div class="       ">
+          <div class="flex">
             <a
               href={telegramParsed.url.toString()}
               target="_blank"
               rel="noopener noreferrer"
-              class="
-          inline-flex items-center gap-2
-          px-4 py-2
-          bg-sky-500 rounded-full
-          text-sm font-bold text-white
-          whitespace-nowrap
-          transition-transform duration-150 active:scale-90
-        "
+              class="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-sky-500 px-4 py-2 font-bold text-sm text-white transition-transform duration-150 active:scale-90"
             >
               <span>
                 {telegramParsed.username.toLowerCase().endsWith("bot")
@@ -96,7 +82,7 @@ export default async function Telegram(
               </span>
               <img
                 src="/icons/arrow-up-right.svg"
-                class="w-4 h-4"
+                class="h-4 w-4"
                 alt="Telegram logo"
                 inline
               />
@@ -105,20 +91,11 @@ export default async function Telegram(
         </div>
 
         {/* Image */}
-        <div class="
-        flex-none w-1/3
-        group-[.card-square]/card:hidden
-        group-[.card-large]/card:w-1/2
-        self-center
-        p-2
-        ">
+        <div class="w-1/3 flex-none self-center p-2 group-[.card-square]/card:hidden group-[.card-large]/card:w-1/2">
           <img
             src={telegramData.image}
             alt="Telegram avatar"
-            class="
-            w-full aspect-square
-            rounded-full
-            "
+            class="aspect-square w-full rounded-full"
             loading="lazy"
             fetchpriority="auto"
             download-image

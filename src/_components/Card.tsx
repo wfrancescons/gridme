@@ -10,7 +10,7 @@ export type CardProps = Lume.Data & {
 export default function Card({ size, clickable, url, children }: CardProps) {
   return (
     <div
-      class={`card card-${size} group/card shadow-xl/5 hover:shadow-xl/10 duration-300 transition-all ${
+      class={`card card-${size} group/card shadow-xl/5 transition-all duration-300 hover:shadow-xl/10 ${
         url || clickable ? "active:scale-95 cursor-pointer" : ""
       }`}
     >

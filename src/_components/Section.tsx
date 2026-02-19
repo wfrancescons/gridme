@@ -5,9 +5,9 @@ export type SectionProps = {
 
 export default function Section({ title, subtitle }: SectionProps) {
   return (
-    <div class="flex flex-col gap-1 items-center text-center">
-      <h2 class="text-2xl font-bold text-neutral-800">{title}</h2>
-      {subtitle && <p class="text-sm text-neutral-500">{subtitle}</p>}
+    <div class="flex flex-col items-center gap-1 text-center">
+      <h2 class="font-bold text-2xl text-neutral-800">{title}</h2>
+      {subtitle && <p class="text-neutral-500 text-sm">{subtitle}</p>}
     </div>
   );
 }

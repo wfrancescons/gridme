@@ -27,11 +27,11 @@ export default function Text(
 
   return (
     <comp.Card size={size}>
-      <div class="flex h-full w-full overflow-hidden items-center">
+      <div class="flex h-full w-full items-center overflow-hidden">
         <div
-          class={`flex items-center justify-center h-full w-full ${
+          class={`flex h-full w-full items-center justify-center ${
             colorsMap[color][0]
-          } p-4 rounded-2xl text-neutral-50 font-bold text-shadow-lg/10 text-center ${
+          } rounded-2xl p-4 text-center font-bold text-neutral-50 text-shadow-lg/10 ${
             textSizeMap[textSize]
           }`}
         >

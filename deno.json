@@ -55,7 +55,8 @@
   ],
   "lint": {
     "plugins": [
-      "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.1/lint.ts"
+      "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.1/lint.ts",
+      "jsr:@ryu/deno-lint-plugin-tailwindcss"
     ],
     "rules": {
       "exclude": [

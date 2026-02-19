@@ -41,12 +41,12 @@ export default function Folder(
             <div class={`absolute inset-0 z-0 ${colorsMap[color][0]}`} />
 
             <div class="absolute inset-0 z-10 flex items-start justify-start p-4">
-              <div class="relative w-full h-1/2 flex items-start justify-center -space-x-15 *:rounded-lg *:shadow-lg/30">
+              <div class="relative flex h-1/2 w-full items-start justify-center -space-x-15 *:rounded-lg *:shadow-lg/30">
                 {Array.from({ length: Math.min(itemCount, 3) }).map((_, i) => (
                   <div
-                    class={`w-40 aspect-3/4 z-${(i + 1) * 10} flex ${
+                    class={`z- aspect-3/4 w-40${(i + 1) * 10} flex ${
                       i % 2 === 0 ? "rotate-1" : "-rotate-1"
-                    } flex-col gap-2 bg-neutral-50 p-4 mt-4 group-hover/folder:mt-0 transition-all duration-500 ease-in-out`}
+                    } mt-4 flex-col gap-2 bg-neutral-50 p-4 transition-all duration-500 ease-in-out group-hover/folder:mt-0`}
                   >
                     <div class="h-1.5 w-3/4 rounded-full bg-black/10" />
                     <div class="h-1.5 w-full rounded-full bg-black/5" />
@@ -82,15 +82,15 @@ export default function Folder(
                 />
               </svg>
 
-              <div class="absolute bottom-0 left-0 flex flex-col gap-1 h-full w-full justify-end items-start p-4">
+              <div class="absolute bottom-0 left-0 flex h-full w-full flex-col items-start justify-end gap-1 p-4">
                 <span
-                  class={`text-base truncate leading-none font-semibold ${
+                  class={`truncate font-semibold text-base leading-none ${
                     colorsMap[color][2]
                   }/70`}
                 >
                   {name}
                 </span>
-                <span class={`text-sm font-semibold ${colorsMap[color][2]}/50`}>
+                <span class={`font-semibold text-sm ${colorsMap[color][2]}/50`}>
                   {itemCount}
                 </span>
               </div>
@@ -103,9 +103,7 @@ export default function Folder(
       <dialog
         id={id}
         closedby="any"
-        class="fixed inset-0 m-0 p-0 backdrop:bg-transparent bg-black/10 h-dvh w-screen max-h-none max-w-none grid items-end justify-center md:items-center
-        overflow-clip pointer-events-none transition-discrete invisible opacity-0 open:visible open:opacity-100 open:pointer-events-auto
-        starting:open:opacity-0 group transition-all duration-300 ease-in-out"
+        class="group pointer-events-none invisible fixed inset-0 m-0 grid h-dvh max-h-none w-screen max-w-none items-end justify-center overflow-clip bg-black/10 p-0 opacity-0 transition-all transition-discrete duration-300 ease-in-out backdrop:bg-transparent open:pointer-events-auto open:visible open:opacity-100 md:items-center starting:open:opacity-0"
       >
         {/* Backdrop to close modal on outside click */}
         <form
@@ -120,9 +118,7 @@ export default function Folder(
         </form>
 
         {/* Modal Box */}
-        <div class="scale-90 group-open:scale-100 transition-transform duration-300 ease-in-out origin-bottom
-      bg-neutral-50 w-screen h-dvh max-w-full md:max-w-4xl max-h-9/10 md:max-h-8/10 overflow-hidden flex flex-col
-        rounded-t-2xl md:rounded-2xl shadow-xl">
+        <div class="flex h-dvh max-h-9/10 w-screen max-w-full flex-col origin-bottom scale-90 overflow-hidden rounded-t-2xl bg-neutral-50 shadow-xl transition-transform duration-300 ease-in-out group-open:scale-100 md:max-h-8/10 md:max-w-4xl md:rounded-2xl">
           {/* Modal Header */}
           <div class="flex items-center p-4">
             <div class="w-10" />
@@ -131,10 +127,10 @@ export default function Folder(
               {name}
             </h2>
 
-            <form method="dialog" class="w-10 flex justify-end">
+            <form method="dialog" class="flex w-10 justify-end">
               <button
                 type="submit"
-                class="text-2xl hover:opacity-70 p-2 bg-neutral-400/20 text-neutral-500 rounded-full transition-transform active:scale-90 duration-150"
+                class="rounded-full bg-neutral-400/20 p-2 text-2xl text-neutral-500 transition-transform duration-150 hover:opacity-70 active:scale-90"
                 aria-label="Close"
               >
                 <img
@@ -148,7 +144,7 @@ export default function Folder(
           </div>
 
           {/* Modal Body */}
-          <div class="flex-1 flex flex-col gap-10 overflow-y-auto p-2 overscroll-contain">
+          <div class="flex flex-1 flex-col gap-10 overflow-y-auto overscroll-contain p-2">
             {children}
           </div>
         </div>

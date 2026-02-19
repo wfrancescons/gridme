@@ -16,31 +16,31 @@ export default function Note({ content, size, comp }: NoteProps) {
 
   return (
     <comp.Card size={size}>
-      <div class="w-full h-full flex flex-col overflow-hidden">
-        <div class="flex flex-row justify-between bg-amber-200 p-3 items-center">
-          <h3 class="font-semibold leading-tight text-amber-950">Note</h3>
-          <div class="flex flex-row-reverse gap-1 justify-center items-center">
+      <div class="flex h-full w-full flex-col overflow-hidden">
+        <div class="flex flex-row items-center justify-between bg-amber-200 p-3">
+          <h3 class="font-semibold text-amber-950 leading-tight">Note</h3>
+          <div class="flex flex-row-reverse items-center justify-center gap-1">
             <button
               type="button"
-              class="text-amber-950/60 inline-flex justify-center items-center bg-amber-500/30 hover:bg-amber-500/50 rounded-full p-2 transition-all duration-200 active:scale-85"
+              class="inline-flex items-center justify-center rounded-full bg-amber-500/30 p-2 text-amber-950/60 transition-all duration-200 hover:bg-amber-500/50 active:scale-85"
               aria-label="Copy"
               data-note-id={id}
             >
               <img
-                class="w-3 h-3"
+                class="h-3 w-3"
                 src="/icons/copy.svg"
                 alt=""
                 inline
               />
             </button>
-            <span class="scale-0 select-none origin-right transition-transform duration-150 ease-in-out text-xs text-amber-950/50">
+            <span class="origin-right scale-0 select-none text-amber-950/50 text-xs transition-transform duration-150 ease-in-out">
               Copied!
             </span>
           </div>
         </div>
 
         <div
-          class="flex-1 px-3 py-2 bg-amber-100 text-zinc-600 overflow-y-auto"
+          class="flex-1 overflow-y-auto bg-amber-100 px-3 py-2 text-zinc-600"
           data-note-content={id}
         >
           {content.split("\n").map((line) => (

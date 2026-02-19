@@ -19,12 +19,12 @@ export default function Image(
 ) {
   return (
     <comp.Card size={size} url={url}>
-      <div class="w-full h-full flex flex-col overflow-hidden">
-        <figure class="relative overflow-hidden rounded-2xl w-full h-full">
+      <div class="flex h-full w-full flex-col overflow-hidden">
+        <figure class="relative h-full w-full overflow-hidden rounded-2xl">
           <img
             src={src}
             alt={alt || caption || "Image"}
-            class="w-full h-full object-cover"
+            class="h-full w-full object-cover"
             transform-images="avif webp jpg 600"
             loading="lazy"
             fetchpriority={getImageIndex() > 2 ? "low" : "high"}
@@ -32,20 +32,20 @@ export default function Image(
 
           {/* Bottom Gradient */}
           {caption && (
-            <div class="absolute bottom-0 left-0 w-full h-1/3 bg-linear-to-t from-black/60 to-transparent" />
+            <div class="absolute bottom-0 left-0 h-1/3 w-full bg-linear-to-t from-black/60 to-transparent" />
           )}
 
           {/* Caption + Link Indicator */}
-          <div class="absolute bottom-0 left-0 w-full p-3 flex justify-between items-end">
-            <figcaption class="text-white text-sm/4 text-shadow-md/30 font-semibold line-clamp-3">
+          <div class="absolute bottom-0 left-0 flex w-full items-end justify-between p-3">
+            <figcaption class="line-clamp-3 font-semibold text-shadow-md/30 text-sm/4 text-white">
               {caption}
             </figcaption>
 
             {url && (
-              <div class="text-white bg-black/25 p-1 rounded-full backdrop-blur-sm outline-2 outline-white/20">
+              <div class="rounded-full bg-black/25 p-1 text-white outline-2 outline-white/20 backdrop-blur-sm">
                 <img
                   src="/icons/arrow-up-right.svg"
-                  class="w-4 h-4"
+                  class="h-4 w-4"
                   inline
                 />
               </div>
