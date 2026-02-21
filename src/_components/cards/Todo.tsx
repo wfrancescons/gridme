@@ -42,7 +42,8 @@ export default function Todo({ items, size, comp }: TodoProps) {
                 <div class="grid grid-cols-1 grid-rows-1">
                   <div class="col-start-1 row-start-1 size-5 rounded-full border-4 border-stone-600/30" />
                   <div
-                    class={`mask-conic-from- col-start-1 row-start-1 size-5 rounded-full border-4 border-stone-700/80${percentage}% mask-conic-to-${percentage}%`}
+                    class={"col-start-1 row-start-1 size-5 rounded-full border-4 border-stone-700/80 " +
+                      `mask-conic-from-${percentage}% mask-conic-to-${percentage}%`}
                   />
                 </div>
               )}
