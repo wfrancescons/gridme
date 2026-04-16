@@ -4,9 +4,9 @@
     "@std/encoding": "jsr:@std/encoding@^1.0.10",
     "@std/path": "jsr:@std/path@^1.1.4",
     "cheerio": "npm:cheerio@^1.2.0",
-    "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.1/",
+    "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.4/",
     "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.14/jsx-runtime.ts",
-    "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@0.14.15/",
+    "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@0.15.0/",
     "@/": "./src/"
   },
   "permissions": {
@@ -40,7 +40,8 @@
     "serve": {
       "description": "Run and serve the site for development",
       "command": "deno task lume -s"
-    }
+    },
+    "dev": "deno task serve"
   },
   "compilerOptions": {
     "types": [
@@ -55,7 +56,7 @@
   ],
   "lint": {
     "plugins": [
-      "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.1/lint.ts",
+      "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.4/lint.ts",
       "jsr:@ryu/deno-lint-plugin-tailwindcss"
     ],
     "rules": {
@@ -64,5 +65,10 @@
       ]
     }
   },
-  "lock": false
+  "lock": false,
+  "allowScripts": {
+    "deny": [
+      "npm:sharp"
+    ]
+  }
 }
