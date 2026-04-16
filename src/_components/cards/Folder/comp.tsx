@@ -103,7 +103,7 @@ export default function Folder(
       <dialog
         id={id}
         closedby="any"
-        class="group pointer-events-none invisible fixed inset-0 m-0 grid h-dvh max-h-none w-screen max-w-none items-end justify-center overflow-clip bg-black/10 p-0 opacity-0 transition-all transition-discrete duration-300 ease-in-out backdrop:bg-transparent open:pointer-events-auto open:visible open:opacity-100 md:items-center starting:open:opacity-0"
+        class="group pointer-events-none invisible fixed inset-0 m-0 grid h-dvh max-h-none w-screen max-w-none items-end justify-center overflow-clip bg-black/10 p-0 opacity-0 transition-all transition-discrete duration-300 ease-in-out backdrop:bg-transparent open:pointer-events-auto open:visible open:opacity-100 open:backdrop-blur-xs md:items-center starting:open:opacity-0"
       >
         {/* Backdrop to close modal on outside click */}
         <form
@@ -130,7 +130,7 @@ export default function Folder(
             <form method="dialog" class="flex w-10 justify-end">
               <button
                 type="submit"
-                class="rounded-full bg-neutral-400/20 p-2 text-2xl text-neutral-500 transition-transform duration-150 hover:opacity-70 active:scale-90"
+                class="rounded-full bg-neutral-400/20 p-2 text-2xl text-neutral-500 transition-all duration-150 hover:opacity-60 active:scale-70"
                 aria-label="Close"
               >
                 <img
