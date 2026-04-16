@@ -196,7 +196,7 @@ export default function Layout(
       </head>
 
       <body>
-        <div class="flex min-h-screen justify-center bg-neutral-50 p-6">
+        <div class="flex min-h-screen justify-center p-6">
           <div class="flex w-full max-w-5xl flex-col">
             <comp.Profile
               img={avatar}
