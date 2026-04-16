@@ -8,7 +8,7 @@ export default function Footer({ hasMapCard }: FooterProps) {
       <p class="flex flex-row items-center justify-center text-center">
         Made with{" "}
         <a
-          href="https://github.com/wfrancescons/gridme"
+          href="https://gridme.bio/"
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex flex-row items-center justify-center gap-0.5 font-bold hover:underline"
