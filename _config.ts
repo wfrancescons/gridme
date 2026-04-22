@@ -1,12 +1,11 @@
-import plugins from "@/plugins/plugins.ts";
 import lume from "lume/mod.ts";
+import plugins from "./plugins.ts";
+
+const siteUrl = "https://gridme.bio";
 
 const site = lume({
   src: "./src",
-});
-
-site.data("dirs", {
-  src: site.src(),
+  location: new URL(siteUrl),
 });
 
 site.use(plugins());
