@@ -22,7 +22,7 @@ components:
     # Text sizes can be: "small" | "medium" | "large" | "extra-large"
     textSize: large # Optional, default = "medium"
 
-  - note:
+  - code:
     size: large
     content: |
       name: Hello, I'm Gridme!

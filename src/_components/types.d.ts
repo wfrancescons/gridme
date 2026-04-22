@@ -1,7 +1,7 @@
 import type { FolderProps } from "@/_components/cards/Folder/comp.tsx";
 import type { ImageProps } from "@/_components/cards/Image.tsx";
 import type { MapProps } from "@/_components/cards/Map/comp.tsx";
-import type { NoteProps } from "@/_components/cards/Note/comp.tsx";
+import type { NoteProps } from "@/_components/cards/Note.tsx";
 import type { TextProps } from "@/_components/cards/Text.tsx";
 import type { TodoProps } from "@/_components/cards/Todo.tsx";
 import type { SectionProps } from "@/_components/Section.tsx";

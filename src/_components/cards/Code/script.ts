@@ -1,9 +1,9 @@
 const noteCopiedTimeouts = new WeakMap<Element, number>();
 
-document.querySelectorAll("[data-note-id]").forEach((btn) => {
+document.querySelectorAll("[data-code-id]").forEach((btn) => {
   btn.addEventListener("click", () => {
-    const noteId = btn.getAttribute("data-note-id");
-    const content = document.querySelector(`[data-note-content="${noteId}"]`);
+    const noteId = btn.getAttribute("data-code-id");
+    const content = document.querySelector(`[data-code-content="${noteId}"]`);
     const copiedLabel = btn.nextElementSibling as HTMLElement;
 
     if (content) {
