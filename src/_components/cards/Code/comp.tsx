@@ -1,6 +1,6 @@
 import type { CardProps } from "@/_components/Card.tsx";
 
-import hljs from "npm:highlight.js@11.11.1";
+import hljs from "npm:highlight.js@11.11.1/lib/common";
 
 export type CodeProps = CardProps & {
   content: string;

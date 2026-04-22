@@ -17,7 +17,6 @@ import terser from "lume/plugins/terser.ts";
 import transformImages from "lume/plugins/transform_images.ts";
 import downloadImages from "./src/plugins/downloadImages.ts";
 import generateFavicon from "./src/plugins/generateFavicon.ts";
-import shiki from "https://deno.land/x/lume_shiki/mod.ts";
 
 export default function plugins() {
   return (site: Lume.Site) => {
@@ -27,19 +26,10 @@ export default function plugins() {
     });
 
     site.use(jsx());
-
-    site.use(shiki({
-    highlighter: {
-      langs: ["javascript", "yaml", "python", "typescript"],
-      themes: ["github-dark"],
-    },
-    theme: "github-dark",
-  }),);
-
     site.use(terser());
     site.use(googleFonts({
       fonts:
-        "https://fonts.google.com/share?selection.family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900",
+        "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+Mono:wght@100..900&display=swap",
     }));
     site.use(tailwindcss());
     site.use(lightningCss());

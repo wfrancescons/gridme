@@ -1,10 +1,11 @@
 @import "tailwindcss";
 @tailwind utilities;
-@plugin 'tailwind-scrollbar';
+@plugin "tailwind-scrollbar";
 
 @layer base {
   :root {
     --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "Noto Sans Mono", ui-monospace, SFMono-Regular, monospace;
     @apply scrollbar scrollbar-thumb-neutral-900/50 scrollbar-track-neutral-50;
   }
 
