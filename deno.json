@@ -1,9 +1,5 @@
 {
   "imports": {
-    "@deno/gfm": "jsr:@deno/gfm@^0.11.0",
-    "@std/encoding": "jsr:@std/encoding@^1.0.10",
-    "@std/path": "jsr:@std/path@^1.1.4",
-    "cheerio": "npm:cheerio@^1.2.0",
     "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.4/",
     "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.14/jsx-runtime.ts",
     "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@0.15.0/",
@@ -41,7 +37,11 @@
       "description": "Run and serve the site for development",
       "command": "deno task lume -s"
     },
-    "dev": "deno task serve"
+    "dev": "deno task serve",
+    "changelog": {
+      "description": "Run the changelog utility to format the CHANGELOG.md file",
+      "command": "deno run --allow-read --allow-write https://deno.land/x/changelog@v3.0.2/bin.ts"
+    }
   },
   "compilerOptions": {
     "types": [
@@ -50,6 +50,10 @@
     "jsx": "react-jsx",
     "jsxImportSource": "lume"
   },
+  "exclude": [
+    "./_site",
+    "./CHANGELOG.md"
+  ],
   "unstable": [
     "temporal",
     "fmt-component"

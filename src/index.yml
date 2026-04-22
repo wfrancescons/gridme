@@ -11,7 +11,7 @@ components:
   - image:
     size: large
     # Make sure the image is in the img folder
-    src: img/1.jpg
+    src: /img/1.jpg
     alt: Alt text for your image # Optional
     caption: I’m an image card with a link # Optional
     url: https://unsplash.com/photos/airplane-wing-flying-over-a-vast-desert-landscape-eraSceLbwFo # Optional

@@ -1,7 +1,7 @@
 import "lume/types.ts";
 
-import imageToDataURL from "@/utils/imageToDataURL.ts";
 import { Page } from "lume/core/file.ts";
+import imageToDataURL from "../utils/imageToDataURL.ts";
 
 export default function generateFavicon() {
   return (site: Lume.Site) => {
@@ -12,7 +12,7 @@ export default function generateFavicon() {
       const avatar = firstPage.data.avatar;
       if (!avatar || typeof avatar !== "string") return;
 
-      const localSrc = firstPage.data.dirs.src;
+      const localSrc = site.src();
 
       const imageDataUrl = await imageToDataURL(avatar, localSrc);
 

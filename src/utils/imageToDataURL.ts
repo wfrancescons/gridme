@@ -1,7 +1,11 @@
-import { encodeBase64 } from "@std/encoding/base64";
-import { extname, join, toFileUrl } from "@std/path";
+import { encodeBase64 } from "jsr:@std/encoding@^1.0.10/base64";
+import { existsSync } from "jsr:@std/fs@^1.0.10";
+import { extname, join } from "jsr:@std/path@^1.1.4";
 
-export default async function imageToDataURL(imgSrc: string, localSrc: string) {
+export default async function imageToDataURL(
+  imgSrc: string,
+  localSrc: string,
+) {
   function isHttpUrl(value: string): boolean {
     try {
       const url = new URL(value);
@@ -11,32 +15,39 @@ export default async function imageToDataURL(imgSrc: string, localSrc: string) {
     }
   }
 
-  let url: URL;
   let ext: string;
+  let bytes: Uint8Array;
 
   if (isHttpUrl(imgSrc)) {
-    url = new URL(imgSrc);
+    const url = new URL(imgSrc);
     ext = extname(url.pathname).slice(1).toLowerCase();
-  } else {
-    const imagePath = join(localSrc, imgSrc);
 
-    url = toFileUrl(imagePath);
-    ext = extname(imagePath).slice(1).toLowerCase();
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Failed to load image");
+    }
+
+    bytes = new Uint8Array(await response.arrayBuffer());
+  } else {
+    const cleanPath = imgSrc.replace(/^\/+/, "");
+    const imagePath = join(localSrc, cleanPath);
+
+    if (existsSync(imagePath)) {
+      ext = extname(imagePath).slice(1).toLowerCase();
+      bytes = await Deno.readFile(imagePath);
+    } else {
+      // fallback
+      const themeUrl = import.meta.resolve(`../${cleanPath}`);
+      const themePath = new URL(themeUrl);
+
+      ext = extname(cleanPath).slice(1).toLowerCase();
+      bytes = await Deno.readFile(themePath);
+    }
   }
 
   if (ext === "jpg") {
     ext = "jpeg";
   }
 
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error("Failed to load image");
-  }
-
-  const bytes = new Uint8Array(await response.arrayBuffer());
-  const base64 = encodeBase64(bytes);
-
-  const imageDataUrl = `data:image/${ext};base64,${base64}`;
-
-  return imageDataUrl;
+  return `data:image/${ext};base64,${encodeBase64(bytes)}`;
 }

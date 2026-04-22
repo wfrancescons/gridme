@@ -1,4 +1,4 @@
-import imageToDataURL from "@/utils/imageToDataURL.ts";
+import imageToDataURL from "../../utils/imageToDataURL.ts";
 
 type ogImageData = Lume.Site & {
   name: string;

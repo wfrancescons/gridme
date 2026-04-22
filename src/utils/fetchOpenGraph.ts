@@ -1,4 +1,4 @@
-import { load } from "cheerio";
+import { load } from "npm:cheerio@^1.2.0";
 
 export async function fetchOpenGraph(
   url: string,

@@ -15,11 +15,16 @@ import seo from "lume/plugins/seo.ts";
 import tailwindcss from "lume/plugins/tailwindcss.ts";
 import terser from "lume/plugins/terser.ts";
 import transformImages from "lume/plugins/transform_images.ts";
-import downloadImages from "./downloadImages.ts";
-import generateFavicon from "./generateFavicon.ts";
+import downloadImages from "./src/plugins/downloadImages.ts";
+import generateFavicon from "./src/plugins/generateFavicon.ts";
 
 export default function plugins() {
   return (site: Lume.Site) => {
+    // Set "src" to og_images.tsx
+    site.data("dirs", {
+      src: site.src(),
+    });
+
     site.use(jsx());
     site.use(terser());
     site.use(googleFonts({
@@ -34,14 +39,18 @@ export default function plugins() {
         height: 400,
       },
     }));
+
     // Download external images
     site.use(downloadImages());
+
     site.use(picture());
     site.use(transformImages());
     site.use(metas());
     site.use(inline());
+
     // Generate favicon from data.avatar
     site.use(generateFavicon());
+
     site.use(favicon());
     site.use(robots());
     site.use(seo({

@@ -1,5 +1,5 @@
 import type { CardProps } from "@/_components/Card.tsx";
-import { fetchOpenGraph } from "@/utils/fetchOpenGraph.ts";
+import { fetchOpenGraph } from "../../utils/fetchOpenGraph.ts";
 
 export type TelegramProps = CardProps & {
   url: string;
