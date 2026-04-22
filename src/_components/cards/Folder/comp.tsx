@@ -144,7 +144,7 @@ export default function Folder(
           </div>
 
           {/* Modal Body */}
-          <div class="flex flex-1 flex-col gap-10 overflow-y-auto overscroll-contain p-2">
+          <div class="scrollbar scrollbar-thumb-neutral-900/50 scrollbar-track-neutral-50 flex flex-1 flex-col gap-10 overflow-y-auto overscroll-contain p-2">
             {children}
           </div>
         </div>

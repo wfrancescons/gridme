@@ -1,9 +1,11 @@
 @import "tailwindcss";
 @tailwind utilities;
+@plugin 'tailwind-scrollbar';
 
 @layer base {
   :root {
     --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    @apply scrollbar scrollbar-thumb-neutral-900/50 scrollbar-track-neutral-50;
   }
 
   :root:has(dialog[open]) {

@@ -25,7 +25,7 @@ export default function Code({ content, size, comp }: CodeProps) {
           <div class="flex flex-row-reverse items-center justify-center gap-1">
             <button
               type="button"
-              class="inline-flex items-center justify-center rounded-full bg-stone-100/25 p-2 text-stone-100/75 transition-all duration-200 hover:bg-stone-200/50 active:scale-85"
+              class="inline-flex items-center justify-center rounded-full bg-stone-100/60 p-2 text-stone-700/90 transition-all duration-200 hover:bg-stone-100/40 active:scale-85"
               aria-label="Copy"
               data-code-id={id}
             >
@@ -38,7 +38,7 @@ export default function Code({ content, size, comp }: CodeProps) {
         </div>
 
         <div
-          class="flex-1 overflow-y-auto bg-stone-800 px-3 py-2 text-sm text-stone-50"
+          class="scrollbar scrollbar-thin scrollbar-thumb-stone-100/50 scrollbar-track-stone-800 flex-1 overflow-y-auto bg-stone-800 px-3 py-2 text-sm text-stone-50"
           data-code-content={id}
         >
           <pre class="whitespace-pre-wrap break-words font-mono">
