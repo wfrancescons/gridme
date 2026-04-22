@@ -23,7 +23,7 @@ jobs:
           cache: true
 
       - name: Build site
-        run: deno task build --location=https://wfrancescons.github.io/gridme
+        run: deno task build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
