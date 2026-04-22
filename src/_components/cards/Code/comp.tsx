@@ -40,7 +40,7 @@ export default function Code({ content, size, comp }: CodeProps) {
         </div>
 
         <div
-  class="flex-1 overflow-y-auto bg-stone-600 px-3 py-2 text-sm text-stone-50"
+  class="flex-1 overflow-y-auto bg-stone-700 px-3 py-2 text-sm text-stone-50"
   data-code-content={id}
 >
   <pre class="whitespace-pre-wrap break-words font-mono">
