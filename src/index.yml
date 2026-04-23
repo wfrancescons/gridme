@@ -16,7 +16,7 @@ components:
 
   - text:
     size: wide
-    content: Copy and paste the content from the Note below
+    content: Copy and paste the content from the Code card below
     # Color can be: "amber" | "blue" | "green" | "red" | "purple" | "neutral"
     color: green # Optional, default = "neutral"
     # Text sizes can be: "small" | "medium" | "large" | "extra-large"
@@ -27,32 +27,100 @@ components:
     content: |
       name: Hello, I'm Gridme!
       description: Organize your ideas, links, and projects in a clean, customizable, and personal card grid, designed for creative developers and built with Lume + Deno.
-      avatar: /img/avatar.jpg # Image must have a 1:1 ratio
+      avatar: https://gridme.bio/img/avatar.jpg # Image must have a 1:1 ratio
       lang: en # Primary site language <html lang>. Default = "en"
 
       components:
-        - section: "Get started:"
+        - section: Cards
           subtitle: Card sizes can be "square", "wide", or "large" # Optional
 
-        - text:
-          size: wide
-          content: 1. Create an "index.yml" file in your project
-          # Color can be: "amber" | "blue" | "green" | "red" | "purple" | "neutral"
-          color: blue # Optional, default = "neutral"
-          # Text sizes can be: "small" | "medium" | "large" | "extra-large"
-          textSize: large # Optional, default = "medium"
-
-        - text:
-          size: wide
-          content: 2. Copy and paste the content from the Note below
-          # Color can be: "amber" | "blue" | "green" | "red" | "purple" | "neutral"
-          color: green # Optional, default = "neutral"
-          # Text sizes can be: "small" | "medium" | "large" | "extra-large"
-          textSize: large # Optional, default = "medium"
+        # Component sizes can be "square", "wide" or "large", except Sections, which do not need one
+        - image:
+          size: large
+          # Make sure the image is in the img folder
+          src: https://images.unsplash.com/photo-1581273154768-0a9a16887d2a?q=80&w=1212&auto=format&fit=crop
+          alt: Alt text for your image # Optional
+          caption: I’m an image card with a link # Optional
+          url: https://unsplash.com/pt-br/fotografias/ilustracao-quadrada-azul-amarela-e-vermelha-_Y3IuVbPpmU # Optional
 
         - note:
+          size: wide
+          content: This is a note card 😉
+
+        - todo:
+          size: square
+          items:
+            - text: git add
+              completed: true
+            - text: git commit
+              completed: false # Optional, default = false
+            - text: git push
+
+        - text:
+          size: square
+          content: Text card here! 👋
+          # Color can be: "amber" | "blue" | "green" | "red" | "purple" | "neutral"
+          color: red # Optional, default = "neutral"
+          # Text sizes can be: "small" | "medium" | "large" | "extra-large"
+          textSize: extra-large # Optional, default = "medium"
+
+        - section: This is a Section
+          subtitle: Add a section to organize topics
+
+        - text:
+          size: wide
+          content: You can also group cards into folders
+          color: amber
+          textSize: large
+
+        - folder:
+          name: I'm a folder
+          components:
+            - section: This is a section inside a folder
+
+            - text:
+              size: wide
+              content: Folders can contain sections and other cards 🗂️
+
+            - text:
+              size: wide
+              color: purple
+              content: Folders can also be nested inside other folders
+              textSize: "extra-large"
+
+            - folder:
+              size: large
+              name: Nested folder
+              color: blue
+              components:
+                - text:
+                  size: square
+                  color: red
+                  content: Hi 👋
+
+        - section: Smart Cards
+          subtitle: Smart Cards automatically render information from their input data
+
+        - link:
           size: large
-          content: This is a note card and you can copy the content 😉
+          url: https://boxdgrid.com/
+
+        - map:
+          size: large
+          # PRIVACY WARNING: do not use more than 3 decimal places for latitude/longitude
+          # Higher precision may reveal your exact location in the frontend !!!!!!
+          center: [-49.253, -25.434] # [lng, lat]
+          zoom: 11 # Optional
+          caption: This is a map card 📍 # Optional
+
+        - telegram:
+          size: wide
+          url: https://t.me/telelastfmbot
+
+        - text:
+          size: wide
+          content: More cards coming soon 👀
+          color: purple
 
   - text:
     size: large
@@ -76,7 +144,7 @@ components:
 
   - note:
     size: wide
-    content: This is a note card and you can copy the content 😉
+    content: This is a note card 😉
 
   - todo:
     size: square
@@ -134,7 +202,7 @@ components:
 
   - link:
     size: large
-    url: https://boxdgrid.deno.dev/
+    url: https://boxdgrid.com/
 
   - map:
     size: large
