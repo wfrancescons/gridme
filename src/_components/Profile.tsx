@@ -12,8 +12,8 @@ export default function Profile({ name, img, description }: ProfileProps) {
           src={img}
           alt="Avatar"
           fetchpriority="high"
-          download-image
           transform-images="avif webp jpg 300"
+          download-image
         />
       </div>
       <div class="flex max-w-sm flex-col gap-2 text-base text-neutral-500">

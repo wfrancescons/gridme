@@ -58,6 +58,7 @@ export default function downloadImages() {
           const cached = imageCache.get(src);
           if (cached) {
             img.setAttribute("src", cached.url);
+            img.removeAttribute("download-image");
             continue;
           }
 
@@ -89,6 +90,7 @@ export default function downloadImages() {
           });
 
           img.setAttribute("src", url);
+          img.removeAttribute("download-image");
         }
       }
     });

@@ -28,6 +28,7 @@ export default function Image(
             transform-images="avif webp jpg 600"
             loading="lazy"
             fetchpriority={getImageIndex() > 2 ? "low" : "high"}
+            download-image
           />
 
           {/* Bottom Gradient */}
