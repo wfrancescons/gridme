@@ -10,14 +10,16 @@ export default function () {
     // Add remote files
     const files = [
       // Components
+      "_components/cards/Code/comp.tsx",
+      "_components/cards/Code/script.ts",
+      "_components/cards/Code/style.css",
       "_components/cards/Folder/comp.tsx",
       "_components/cards/Folder/script.ts",
       "_components/cards/Map/comp.tsx",
       "_components/cards/Map/script.ts",
-      "_components/cards/Note/comp.tsx",
-      "_components/cards/Note/script.ts",
       "_components/cards/Image.tsx",
       "_components/cards/Link.tsx",
+      "_components/cards/Note.tsx",
       "_components/cards/Telegram.tsx",
       "_components/cards/Text.tsx",
       "_components/cards/Todo.tsx",
@@ -40,7 +42,6 @@ export default function () {
       "icons/telegram.svg",
 
       // Images
-      "img/1.jpg",
       "img/avatar.jpg",
       "img/map-placeholder.png",
 
