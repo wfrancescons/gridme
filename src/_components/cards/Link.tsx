@@ -14,14 +14,12 @@ export default async function Link(
   return (
     <comp.Card size={size} url={url}>
       <div class="flex h-full w-full flex-row justify-between gap-3 overflow-hidden bg-neutral-100 p-4 group-[.card-large]/card:flex-col-reverse">
-        <div class="flex flex-1 flex-col justify-center gap-3">
+        <div class="flex min-w-0 flex-1 flex-col justify-center gap-3">
           {/* Title */}
-          <div class="">
-            <div class="flex flex-col items-start text-start">
-              <span class="line-clamp-3 font-bold text-base text-neutral-800">
-                {linkData.title ? linkData.title : url}
-              </span>
-            </div>
+          <div class="flex flex-col items-start text-start">
+            <span class="wrap-anywhere line-clamp-3 font-bold text-base text-neutral-800">
+              {linkData.title ? linkData.title : url}
+            </span>
           </div>
 
           {/* Icon + Hostname */}
@@ -41,11 +39,11 @@ export default async function Link(
 
         {/* Image */}
         {linkData.image && (
-          <div class="flex aspect-square flex-none overflow-hidden rounded-2xl group-[.card-square]/card:hidden group-[.card-large]/card:aspect-video group-[.card-large]/card:w-full">
+          <div class="aspect-square shrink-0 overflow-hidden rounded-2xl group-[.card-square]/card:hidden group-[.card-large]/card:aspect-video group-[.card-large]/card:w-full">
             <img
               src={linkData.image}
               alt="Site image"
-              class="h-full w-full object-cover"
+              class="size-full object-cover"
               download-image
               transform-images="avif webp jpg 350"
             />
