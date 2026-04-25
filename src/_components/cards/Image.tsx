@@ -24,7 +24,7 @@ export default function Image(
           <img
             src={src}
             alt={alt || caption || "Image"}
-            class="h-full w-full object-cover"
+            class="size-full object-cover"
             transform-images="avif webp jpg 600"
             loading="lazy"
             fetchpriority={getImageIndex() > 2 ? "low" : "high"}
@@ -33,12 +33,12 @@ export default function Image(
 
           {/* Bottom Gradient */}
           {caption && (
-            <div class="absolute bottom-0 left-0 h-1/3 w-full bg-linear-to-t from-black/60 to-transparent" />
+            <div class="absolute bottom-0 left-0 h-1/3 w-full bg-linear-to-t from-black/75 to-transparent" />
           )}
 
           {/* Caption + Link Indicator */}
-          <div class="absolute bottom-0 left-0 flex w-full items-end justify-between p-3">
-            <figcaption class="line-clamp-3 font-semibold text-shadow-md/30 text-sm/4 text-white">
+          <div class="absolute bottom-0 left-0 flex w-full items-end justify-between gap-3 p-3">
+            <figcaption class="line-clamp-3 p-1 font-semibold text-shadow-md/30 text-sm/4 text-white">
               {caption}
             </figcaption>
 
